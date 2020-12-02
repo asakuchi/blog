@@ -1,6 +1,7 @@
 ---
 title: Gatsby サブディレクトリを設定する
 date: "2020-12-03T19:00:00+09:00"
+description:
 ---
 
 ブログをサブディレクトリで公開したいです。
@@ -10,7 +11,7 @@ date: "2020-12-03T19:00:00+09:00"
 https://www.gatsbyjs.com/docs/path-prefix/
 
 gatsby-config.js
-```js:gatsby-config.js
+```js
 module.exports = {
   pathPrefix: `/blog`,
 }
@@ -33,7 +34,7 @@ gatsby serve --prefix-paths
 
 package.jsonを修正しておきます。
 
-```json:package.json
+```json
   "scripts": {
     "build": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
