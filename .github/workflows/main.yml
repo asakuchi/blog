@@ -32,5 +32,6 @@ jobs:
         run: |
           git config --global user.email "paleapricot.asakuchi@gmail.com"
           git config --global user.name "asakuchi"
-          npm install
+          git remote -v
+          npm ci
           npm run deploy
