@@ -28,5 +28,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: deploy gh-pages
         run: |
+          git config --global user.email "paleapricot.asakuchi@gmail.com"
+          git config --global user.name "asakuchi"
           npm install
           npm run deploy
