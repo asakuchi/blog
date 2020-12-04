@@ -28,7 +28,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: deploy gh-pages
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         run: |
           git config --global user.email "paleapricot.asakuchi@gmail.com"
           git config --global user.name "asakuchi"
