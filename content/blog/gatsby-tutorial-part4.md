@@ -1,7 +1,7 @@
 ---
 title: Gatsby のチュートリアル part4 でエラー
 date: "2020-12-02T23:44:00+09:00"
-description: Gatsby tutorial
+description:
 ---
 
 Gatsby のチュートリアルをやっていたところ `gatsby develop` でこけました。
