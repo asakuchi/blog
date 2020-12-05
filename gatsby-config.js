@@ -13,13 +13,13 @@ module.exports = {
   },
   pathPrefix: `/blog`,
   plugins: [
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `G-4SYPQ4EHN1`,
-        head: true,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: `G-4SYPQ4EHN1`,
+    //     head: true,
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
