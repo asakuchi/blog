@@ -1,5 +1,5 @@
 ---
-title: [Gatsby] GraphQL の edges.node.data と nodes.data の違いって何？
+title: 【Gatsby】 GraphQL の edges.node.data と nodes.data の違いって何？
 date: "2020-12-05T19:00:00+09:00"
 description:
 ---
