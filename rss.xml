@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 05 Dec 2020 03:16:05 GMT</lastBuildDate><item><title><![CDATA[Gatsby で作ったブログを Github Pages で公開する]]></title><description><![CDATA[で作ったブログを GitHub Pages で公開したい。
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 05 Dec 2020 03:51:30 GMT</lastBuildDate><item><title><![CDATA[Gatsby で作ったブログを Github Pages で公開する]]></title><description><![CDATA[で作ったブログを GitHub Pages で公開したい。
 以下のドキュメントの通り進める。 https://www.gatsbyjs.com/docs/how-gatsby-works-with-github-pages…]]></description><link>https://asakuchi.github.io/gatsby-auto-deploy/</link><guid isPermaLink="false">https://asakuchi.github.io/gatsby-auto-deploy/</guid><pubDate>Fri, 04 Dec 2020 10:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Gatsby&lt;/code&gt; で作ったブログを GitHub Pages で公開したい。
 以下のドキュメントの通り進める。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.gatsbyjs.com/docs/how-gatsby-works-with-github-pages&quot;&gt;https://www.gatsbyjs.com/docs/how-gatsby-works-with-github-pages&lt;/a&gt;&lt;/p&gt;
@@ -21,7 +21,17 @@ $ &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; commit --allow-e
 &lt;p&gt;上記の設定をすることで簡単に deploy できるようになる。&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; run deploy&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;せっかくなので push したら deploy されるように &lt;code class=&quot;language-text&quot;&gt;Github Actions&lt;/code&gt; の設定もする。&lt;/p&gt;
-&lt;script src=&quot;https://gist-it.appspot.com/github/asakuchi/blog/blob/main/.github/workflows/main.yml&quot;&gt;&lt;/script&gt;</content:encoded></item><item><title><![CDATA[Gatsby サブディレクトリを設定する]]></title><description><![CDATA[ブログをサブディレクトリで公開したいです。
+&lt;script src=&quot;https://gist-it.appspot.com/github/asakuchi/blog/blob/main/.github/workflows/main.yml&quot;&gt;&lt;/script&gt;
+&lt;p&gt;デフォルトの yml ファイルに、このあたりを追加しました。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yml&quot;&gt;&lt;pre class=&quot;language-yml&quot;&gt;&lt;code class=&quot;language-yml&quot;&gt;      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; deploy gh&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;pages
+        &lt;span class=&quot;token key atrule&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;GITHUB_TOKEN&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; $&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; secrets.GITHUB_TOKEN &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;token key atrule&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token scalar string&quot;&gt;
+          git config --global user.email &quot;paleapricot.asakuchi@gmail.com&quot;
+          git config --global user.name &quot;asakuchi&quot;
+          git remote set-url origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm ci
+          npm run deploy&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Gatsby サブディレクトリを設定する]]></title><description><![CDATA[ブログをサブディレクトリで公開したいです。
 つまり  ではなく  でブログを公開してみます。
 以下のドキュメントの通りにするだけです。 https://www.gatsbyjs.com/docs/path-prefix/ gatsby-config.js build serve…]]></description><link>https://asakuchi.github.io/gatsby-sub-directory/</link><guid isPermaLink="false">https://asakuchi.github.io/gatsby-sub-directory/</guid><pubDate>Thu, 03 Dec 2020 10:00:00 GMT</pubDate><content:encoded>&lt;p&gt;ブログをサブディレクトリで公開したいです。
 つまり &lt;code class=&quot;language-text&quot;&gt;/&lt;/code&gt; ではなく &lt;code class=&quot;language-text&quot;&gt;/blog&lt;/code&gt; でブログを公開してみます。
