@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 05 Dec 2020 05:03:20 GMT</lastBuildDate><item><title><![CDATA[Gatsby で作ったブログを Github Pages で公開する]]></title><description><![CDATA[で作ったブログを GitHub Pages で公開したい。
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 05 Dec 2020 05:04:29 GMT</lastBuildDate><item><title><![CDATA[Gatsby で作ったブログを Github Pages で公開する]]></title><description><![CDATA[で作ったブログを GitHub Pages で公開したい。
 以下のドキュメントの通り進める。 https://www.gatsbyjs.com/docs/how-gatsby-works-with-github-pages…]]></description><link>https://asakuchi.github.io/gatsby-auto-deploy/</link><guid isPermaLink="false">https://asakuchi.github.io/gatsby-auto-deploy/</guid><pubDate>Fri, 04 Dec 2020 10:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Gatsby&lt;/code&gt; で作ったブログを GitHub Pages で公開したい。
 以下のドキュメントの通り進める。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.gatsbyjs.com/docs/how-gatsby-works-with-github-pages&quot;&gt;https://www.gatsbyjs.com/docs/how-gatsby-works-with-github-pages&lt;/a&gt;&lt;/p&gt;
@@ -208,7 +208,7 @@ npm init ★package.json の内容に従ってインストール
 npm install ★パッケージ追加
 npm install パッケージ名
 （—saveいらない） ★パッケージ追加（開発用）
-npm install…]]></description><link>https://asakuchi.github.io/npm/</link><guid isPermaLink="false">https://asakuchi.github.io/npm/</guid><pubDate>Mon, 30 Nov 2020 14:01:00 GMT</pubDate><content:encoded>&lt;p&gt;★初期化（package.jsonができる）
+npm install…]]></description><link>https://asakuchi.github.io/npm-command-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/npm-command-memo/</guid><pubDate>Mon, 30 Nov 2020 14:01:00 GMT</pubDate><content:encoded>&lt;p&gt;★初期化（package.jsonができる）
 npm init&lt;/p&gt;
 &lt;p&gt;★package.json の内容に従ってインストール
 npm install&lt;/p&gt;
