@@ -50,4 +50,4 @@ $ npm run deploy
 
 せっかくなので push したら deploy されるように `Github Actions` の設定もする。
 
-<script src="https://gist-it.appspot.com/sakuchi/blog/blob/main/.github/workflows/main.yml"></script>
+<script src="https://gist-it.appspot.com/github/asakuchi/blog/blob/main/.github/workflows/main.yml"></script>
