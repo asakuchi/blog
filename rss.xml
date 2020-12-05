@@ -1,4 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 04 Dec 2020 01:19:41 GMT</lastBuildDate><item><title><![CDATA[Gatsby サブディレクトリを設定する]]></title><description><![CDATA[ブログをサブディレクトリで公開したいです。
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 05 Dec 2020 02:54:03 GMT</lastBuildDate><item><title><![CDATA[Gatsby で作ったブログを Github Pages で公開する]]></title><description><![CDATA[で作ったブログを GitHub Pages で公開したい。
+以下のドキュメントの通り進める。 https://www.gatsbyjs.com/docs/how-gatsby-works-with-github-pages…]]></description><link>https://asakuchi.github.io/gatsby-auto-deploy/</link><guid isPermaLink="false">https://asakuchi.github.io/gatsby-auto-deploy/</guid><pubDate>Fri, 04 Dec 2020 10:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Gatsby&lt;/code&gt; で作ったブログを GitHub Pages で公開したい。
+以下のドキュメントの通り進める。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.gatsbyjs.com/docs/how-gatsby-works-with-github-pages&quot;&gt;https://www.gatsbyjs.com/docs/how-gatsby-works-with-github-pages&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;（手順の中でサブディレクトリの設定もあるので&lt;a href=&quot;../gatsby-sub-directory/&quot;&gt;前回&lt;/a&gt;の記事いらなかった・・・）&lt;/p&gt;
+&lt;p&gt;まずは空の &lt;code class=&quot;language-text&quot;&gt;gh-pages&lt;/code&gt; ブランチを作成する。
+ここに build 後のファイルを deploy していくことになります。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout --orphan gh-pages
+$ &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout --orphan gh-pages
+$ &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; commit --allow-empty -m &lt;span class=&quot;token string&quot;&gt;&quot;root commit&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;npm パッケージのインストール。deploy するのに使います。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ npm install gh-pages --save-dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;gatsby-config.js の設定変更。（前回実施済みだが）&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  pathPrefix&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;/blog&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;package.jsonの修正。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;  &lt;span class=&quot;token property&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;deploy&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;gatsby build --prefix-paths &amp;amp;&amp;amp; gh-pages -d public&quot;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上記の設定をすることで簡単に deploy できるようになる。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; run deploy&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;せっかくなので push したら deploy されるように &lt;code class=&quot;language-text&quot;&gt;Github Actions&lt;/code&gt; の設定もする。&lt;/p&gt;
+&lt;script src=&quot;https://gist-it.appspot.com/sakuchi/blog/blob/main/.github/workflows/main.yml&quot;&gt;&lt;/script&gt;</content:encoded></item><item><title><![CDATA[Gatsby サブディレクトリを設定する]]></title><description><![CDATA[ブログをサブディレクトリで公開したいです。
 つまり  ではなく  でブログを公開してみます。
 以下のドキュメントの通りにするだけです。 https://www.gatsbyjs.com/docs/path-prefix/ gatsby-config.js build serve…]]></description><link>https://asakuchi.github.io/gatsby-sub-directory/</link><guid isPermaLink="false">https://asakuchi.github.io/gatsby-sub-directory/</guid><pubDate>Thu, 03 Dec 2020 10:00:00 GMT</pubDate><content:encoded>&lt;p&gt;ブログをサブディレクトリで公開したいです。
 つまり &lt;code class=&quot;language-text&quot;&gt;/&lt;/code&gt; ではなく &lt;code class=&quot;language-text&quot;&gt;/blog&lt;/code&gt; でブログを公開してみます。
