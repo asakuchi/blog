@@ -51,3 +51,17 @@ $ npm run deploy
 せっかくなので push したら deploy されるように `Github Actions` の設定もする。
 
 <script src="https://gist-it.appspot.com/github/asakuchi/blog/blob/main/.github/workflows/main.yml"></script>
+
+デフォルトの yml ファイルに、このあたりを追加しました。
+
+```yml
+      - name: deploy gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.email "paleapricot.asakuchi@gmail.com"
+          git config --global user.name "asakuchi"
+          git remote set-url origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm ci
+          npm run deploy
+```
