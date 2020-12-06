@@ -3,8 +3,8 @@ title: webpack チュートリアルをやった その1
 date: "2020-12-06T19:00:00+09:00"
 description:
 tags:
-  - 'webpack'
-  - 'node.js'
+  - "webpack"
+  - "node.js"
 ---
 
 `webpack` のチュートリアルやります。
@@ -180,5 +180,79 @@ module.exports = {
   },
 }
 ```
+
+## Development
+
+mode を develop にしてみましょう。
+
+ここのページだと解説がまるでないけど、こっちのページに何が起こるのか載っている。
+
+https://webpack.js.org/configuration/mode/#mode-development
+
+```js:title=webpack.config.js
+module.exports = {
+  ～～～
+  mode: 'development',
+  ～～～
+}
+```
+
+ソースマップ
+
+エラーが起きた時にバンドル前のファイル名の行数がわかるようになる。
+
+```js:title=webpack.config.js
+module.exports = {
+  ～～～
+  devtool: 'inline-source-map',
+  ～～～
+}
+```
+
+Development Tool
+
+3 つあるけど、大抵の場合は `webpack-dev-server`で OK、とのこと。
+
+```shell
+$ npm install --save-dev webpack-dev-server
+```
+
+dev server にバンドルされたファイルの場所を教えます。
+
+```js:title=webpack.config.js
+module.exports = {
+  ～～～
+  devServer: {
+    contentBase: './dist',
+  },
+  ～～～
+}
+```
+
+dev server を簡単に動かせるようにスクリプトを書きます。
+
+```json:title=package.json
+{
+  "scripts": {
+    "start": "webpack serve --open"
+  }
+}
+```
+
+と、書いてあるももの、オプションの指定間違ってるっぽい？？
+
+↓ にしておきます。
+
+```json:title=package.json
+{
+  "scripts": {
+    "start": "webpack serve"
+  }
+}
+```
+
+`npm run start`すると dev server が起動します。
+localhost:8080 にアクセスするとバンドル後のファイルにアクセスできます。
+ファイルの変更を検知したら再 build とブラウザのリロードを自動でやってくれます。便利。
 
 続く
