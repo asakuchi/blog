@@ -40,3 +40,13 @@ https://answers.microsoft.com/ja-jp/windows/forum/windows8_1-winapps-social/erro
 > をクリック。
 
 これの後にOS再起動で解消した。
+
+# WSL2内のサーバにWindowsからアクセスする
+
+https://qiita.com/snaka/items/a8eee4cfc8f7d733e6ab
+
+.wsconfig に以下を追記
+
+```
+localhostForwarding=True
+```
