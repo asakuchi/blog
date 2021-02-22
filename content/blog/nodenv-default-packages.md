@@ -1,5 +1,5 @@
 ---
-title: nodenv install でエラー
+title: nodenv default-packages
 date: "2021-02-21T19:00+09:00"
 description:
 tags:
@@ -8,8 +8,20 @@ tags:
   - "JavaScript"
 ---
 
-Node.js のインストールでエラー発生。
-解決できてない。
+# default-packages とは
+
+ここにパッケージ名を記載しておくと、```nodenv install```したときに自動的にグローバルインストールしてくれる。
+
+```$(nodenv root)/default-packages```
+
+```
+yarn
+typescript
+ts-node
+typesync
+```
+
+上記ファイルでタイプミスすると ```nodenv install``` でエラーが起きるので注意。
 
 ```
 user1@apricot:~$ nodenv install 14.4.0
@@ -31,19 +43,4 @@ npm ERR! 404 tarball, folder, http url, or git url.
 
 npm ERR! A complete log of this run can be found in:
 npm ERR!     /home/user1/.npm/_logs/2021-02-21T13_47_44_661Z-debug.log
-```
-
-インストールはできてるのかな・・・？？
-
-```
-user1@apricot:~$ nodenv versions
-* 14.4.0 (set by /home/user1/.anyenv/envs/nodenv/version)
-  15.9.0
-user1@apricot:~$ node --version
-v14.4.0
-user1@apricot:~$ node
-Welcome to Node.js v14.4.0.
-Type ".help" for more information.
-> 1 + 1
-2
 ```
