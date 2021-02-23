@@ -43,10 +43,21 @@ https://answers.microsoft.com/ja-jp/windows/forum/windows8_1-winapps-social/erro
 
 # WSL2内のサーバにWindowsからアクセスする
 
-https://qiita.com/snaka/items/a8eee4cfc8f7d733e6ab
+WSL2内のサーバに localhost で Windows からアクセスできない。
+IP指定ならできる。
 
-.wsconfig に以下を追記
+.wsconfig に以下を追記することで localhost でアクセスできるようになる。
 
 ```
 localhostForwarding=True
 ```
+
+参考：
+https://qiita.com/snaka/items/a8eee4cfc8f7d733e6ab
+
+※ 2021/02/23 追記
+
+localhost でアクセスできなくなった・・・。
+
+.wsconfig の localhostForwarding を消したら localhost でアクセスできるようになった。
+どういうことなの・・・。
