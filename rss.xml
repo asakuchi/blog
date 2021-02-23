@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 23 Feb 2021 11:43:51 GMT</lastBuildDate><item><title><![CDATA[nodenv default-packages]]></title><description><![CDATA[default-packages とは ここにパッケージ名を記載しておくと、したときに自動的にグローバルインストールしてくれる。  上記ファイルでタイプミスすると  でエラーが起きるので注意。]]></description><link>https://asakuchi.github.io/nodenv-default-packages/</link><guid isPermaLink="false">https://asakuchi.github.io/nodenv-default-packages/</guid><pubDate>Sun, 21 Feb 2021 10:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;default-packages とは&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 23 Feb 2021 11:48:50 GMT</lastBuildDate><item><title><![CDATA[nodenv default-packages]]></title><description><![CDATA[default-packages とは ここにパッケージ名を記載しておくと、したときに自動的にグローバルインストールしてくれる。  上記ファイルでタイプミスすると  でエラーが起きるので注意。]]></description><link>https://asakuchi.github.io/nodenv-default-packages/</link><guid isPermaLink="false">https://asakuchi.github.io/nodenv-default-packages/</guid><pubDate>Sun, 21 Feb 2021 10:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;default-packages とは&lt;/h1&gt;
 &lt;p&gt;ここにパッケージ名を記載しておくと、&lt;code class=&quot;language-text&quot;&gt;nodenv install&lt;/code&gt;したときに自動的にグローバルインストールしてくれる。&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;$(nodenv root)/default-packages&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn
@@ -411,78 +411,7 @@ To create a production build, use gatsby build
 ⠀
 success Building development bundle - &lt;span class=&quot;token number&quot;&gt;9&lt;/span&gt;.997s&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;参考
-&lt;a href=&quot;https://github.com/doczjs/docz/issues/577&quot;&gt;https://github.com/doczjs/docz/issues/577&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[README(Gatsby's blog starter)]]></title><description><![CDATA[以下、Gatsby’s blog starter の初期状態のREADME Kick off your project with this blog boilerplate. This starter ships with the main Gatsby…]]></description><link>https://asakuchi.github.io/starter-README/</link><guid isPermaLink="false">https://asakuchi.github.io/starter-README/</guid><pubDate>Tue, 01 Dec 2020 09:00:00 GMT</pubDate><content:encoded>&lt;p&gt;以下、Gatsby’s blog starter の初期状態のREADME&lt;/p&gt;
-&lt;!-- AUTO-GENERATED-CONTENT:START (STARTER) --&gt;
-&lt;p align=&quot;center&quot;&gt;
-  &lt;a href=&quot;https://www.gatsbyjs.com&quot;&gt;
-    &lt;img alt=&quot;Gatsby&quot; src=&quot;https://www.gatsbyjs.com/Gatsby-Monogram.svg&quot; width=&quot;60&quot;&gt;
-  &lt;/a&gt;
-&lt;/p&gt;
-&lt;h1 align=&quot;center&quot;&gt;
-  Gatsby&amp;apos;s blog starter
-&lt;/h1&gt;
-&lt;p&gt;Kick off your project with this blog boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Have another more specific idea? You may want to check out our vibrant collection of &lt;a href=&quot;https://www.gatsbyjs.com/docs/gatsby-starters/&quot;&gt;official and community-created starters&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;h2&gt;🚀 Quick start&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Create a Gatsby site.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Use the Gatsby CLI to create a new site, specifying the blog starter.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# create a new Gatsby site using the blog starter&lt;/span&gt;
-gatsby new my-blog-starter https://github.com/gatsbyjs/gatsby-starter-blog&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Start developing.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Navigate into your new site’s directory and start it up.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; my-blog-starter/
-gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Open the source code and start editing!&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Your site is now running at &lt;code class=&quot;language-text&quot;&gt;http://localhost:8000&lt;/code&gt;!&lt;/p&gt;
-&lt;p&gt;_Note: You’ll also see a second link: _&lt;code class=&quot;language-text&quot;&gt;http://localhost:8000/___graphql&lt;/code&gt;&lt;em&gt;. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the &lt;a href=&quot;https://www.gatsbyjs.com/tutorial/part-five/#introducing-graphiql&quot;&gt;Gatsby tutorial&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Open the &lt;code class=&quot;language-text&quot;&gt;my-blog-starter&lt;/code&gt; directory in your code editor of choice and edit &lt;code class=&quot;language-text&quot;&gt;src/pages/index.js&lt;/code&gt;. Save your changes and the browser will update in real time!&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2&gt;🧐 What’s inside?&lt;/h2&gt;
-&lt;p&gt;A quick look at the top-level files and directories you’ll see in a Gatsby project.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;.
-├── node_modules
-├── src
-├── .gitignore
-├── .prettierrc
-├── gatsby-browser.js
-├── gatsby-config.js
-├── gatsby-node.js
-├── gatsby-ssr.js
-├── LICENSE
-├── package-lock.json
-├── package.json
-└── README.md&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;/node_modules&lt;/code&gt;&lt;/strong&gt;: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;/src&lt;/code&gt;&lt;/strong&gt;: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. &lt;code class=&quot;language-text&quot;&gt;src&lt;/code&gt; is a convention for “source code”.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;.gitignore&lt;/code&gt;&lt;/strong&gt;: This file tells git which files it should not track / not maintain a version history for.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;.prettierrc&lt;/code&gt;&lt;/strong&gt;: This is a configuration file for &lt;a href=&quot;https://prettier.io/&quot;&gt;Prettier&lt;/a&gt;. Prettier is a tool to help keep the formatting of your code consistent.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;gatsby-browser.js&lt;/code&gt;&lt;/strong&gt;: This file is where Gatsby expects to find any usage of the &lt;a href=&quot;https://www.gatsbyjs.com/docs/browser-apis/&quot;&gt;Gatsby browser APIs&lt;/a&gt; (if any). These allow customization/extension of default Gatsby settings affecting the browser.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;gatsby-config.js&lt;/code&gt;&lt;/strong&gt;: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the &lt;a href=&quot;https://www.gatsbyjs.com/docs/gatsby-config/&quot;&gt;config docs&lt;/a&gt; for more detail).&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;gatsby-node.js&lt;/code&gt;&lt;/strong&gt;: This file is where Gatsby expects to find any usage of the &lt;a href=&quot;https://www.gatsbyjs.com/docs/node-apis/&quot;&gt;Gatsby Node APIs&lt;/a&gt; (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;gatsby-ssr.js&lt;/code&gt;&lt;/strong&gt;: This file is where Gatsby expects to find any usage of the &lt;a href=&quot;https://www.gatsbyjs.com/docs/ssr-apis/&quot;&gt;Gatsby server-side rendering APIs&lt;/a&gt; (if any). These allow customization of default Gatsby settings affecting server-side rendering.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;LICENSE&lt;/code&gt;&lt;/strong&gt;: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;package-lock.json&lt;/code&gt;&lt;/strong&gt; (See &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. &lt;strong&gt;(You won’t change this file directly).&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt;&lt;/strong&gt;: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;README.md&lt;/code&gt;&lt;/strong&gt;: A text file containing useful reference information about your project.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2&gt;🎓 Learning Gatsby&lt;/h2&gt;
-&lt;p&gt;Looking for more guidance? Full documentation for Gatsby lives &lt;a href=&quot;https://www.gatsbyjs.com/&quot;&gt;on the website&lt;/a&gt;. Here are some places to start:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;For most developers, we recommend starting with our &lt;a href=&quot;https://www.gatsbyjs.com/tutorial/&quot;&gt;in-depth tutorial for creating a site with Gatsby&lt;/a&gt;.&lt;/strong&gt; It starts with zero assumptions about your level of ability and walks through every step of the process.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;To dive straight into code samples, head &lt;a href=&quot;https://www.gatsbyjs.com/docs/&quot;&gt;to our documentation&lt;/a&gt;.&lt;/strong&gt; In particular, check out the &lt;em&gt;Guides&lt;/em&gt;, &lt;em&gt;API Reference&lt;/em&gt;, and &lt;em&gt;Advanced Tutorials&lt;/em&gt; sections in the sidebar.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;💫 Deploy&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-blog&quot;&gt;&lt;img src=&quot;https://www.netlify.com/img/deploy/button.svg&quot; alt=&quot;Deploy to Netlify&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-blog&quot;&gt;&lt;img src=&quot;https://vercel.com/button&quot; alt=&quot;Deploy with Vercel&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;!-- AUTO-GENERATED-CONTENT:END --&gt;</content:encoded></item><item><title><![CDATA[npm コマンドメモ]]></title><description><![CDATA[★初期化（package.jsonができる） ★package.json の内容に従ってインストール ★パッケージ追加 （—saveいらない） ★パッケージ追加（開発用） ★パッケージ追加（グローバル）]]></description><link>https://asakuchi.github.io/npm-command-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/npm-command-memo/</guid><pubDate>Mon, 30 Nov 2020 14:01:00 GMT</pubDate><content:encoded>&lt;p&gt;★初期化（package.jsonができる）&lt;/p&gt;
+&lt;a href=&quot;https://github.com/doczjs/docz/issues/577&quot;&gt;https://github.com/doczjs/docz/issues/577&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[npm コマンドメモ]]></title><description><![CDATA[★初期化（package.jsonができる） ★package.json の内容に従ってインストール ★パッケージ追加 （—saveいらない） ★パッケージ追加（開発用） ★パッケージ追加（グローバル）]]></description><link>https://asakuchi.github.io/npm-command-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/npm-command-memo/</guid><pubDate>Mon, 30 Nov 2020 14:01:00 GMT</pubDate><content:encoded>&lt;p&gt;★初期化（package.jsonができる）&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;★package.json の内容に従ってインストール&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
