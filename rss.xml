@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 23 Feb 2021 11:20:53 GMT</lastBuildDate><item><title><![CDATA[nodenv default-packages]]></title><description><![CDATA[default-packages とは ここにパッケージ名を記載しておくと、したときに自動的にグローバルインストールしてくれる。  上記ファイルでタイプミスすると  でエラーが起きるので注意。]]></description><link>https://asakuchi.github.io/nodenv-default-packages/</link><guid isPermaLink="false">https://asakuchi.github.io/nodenv-default-packages/</guid><pubDate>Sun, 21 Feb 2021 10:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;default-packages とは&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 23 Feb 2021 11:43:51 GMT</lastBuildDate><item><title><![CDATA[nodenv default-packages]]></title><description><![CDATA[default-packages とは ここにパッケージ名を記載しておくと、したときに自動的にグローバルインストールしてくれる。  上記ファイルでタイプミスすると  でエラーが起きるので注意。]]></description><link>https://asakuchi.github.io/nodenv-default-packages/</link><guid isPermaLink="false">https://asakuchi.github.io/nodenv-default-packages/</guid><pubDate>Sun, 21 Feb 2021 10:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;default-packages とは&lt;/h1&gt;
 &lt;p&gt;ここにパッケージ名を記載しておくと、&lt;code class=&quot;language-text&quot;&gt;nodenv install&lt;/code&gt;したときに自動的にグローバルインストールしてくれる。&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;$(nodenv root)/default-packages&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn
@@ -482,19 +482,23 @@ gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;💫 Deploy&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-blog&quot;&gt;&lt;img src=&quot;https://www.netlify.com/img/deploy/button.svg&quot; alt=&quot;Deploy to Netlify&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-blog&quot;&gt;&lt;img src=&quot;https://vercel.com/button&quot; alt=&quot;Deploy with Vercel&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;!-- AUTO-GENERATED-CONTENT:END --&gt;</content:encoded></item><item><title><![CDATA[npm コマンドメモ]]></title><description><![CDATA[★初期化（package.jsonができる）
-npm init ★package.json の内容に従ってインストール
-npm install ★パッケージ追加
-npm install パッケージ名
-（—saveいらない） ★パッケージ追加（開発用）
-npm install…]]></description><link>https://asakuchi.github.io/javascript/npm-command-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/javascript/npm-command-memo/</guid><pubDate>Mon, 30 Nov 2020 14:01:00 GMT</pubDate><content:encoded>&lt;p&gt;★初期化（package.jsonができる）
-npm init&lt;/p&gt;
-&lt;p&gt;★package.json の内容に従ってインストール
-npm install&lt;/p&gt;
-&lt;p&gt;★パッケージ追加
-npm install パッケージ名
-（—saveいらない）&lt;/p&gt;
-&lt;p&gt;★パッケージ追加（開発用）
-npm install —save-dev パッケージ名&lt;/p&gt;
-&lt;p&gt;★パッケージ追加（グローバル）
-npm install —global  パッケージ名&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;!-- AUTO-GENERATED-CONTENT:END --&gt;</content:encoded></item><item><title><![CDATA[npm コマンドメモ]]></title><description><![CDATA[★初期化（package.jsonができる） ★package.json の内容に従ってインストール ★パッケージ追加 （—saveいらない） ★パッケージ追加（開発用） ★パッケージ追加（グローバル）]]></description><link>https://asakuchi.github.io/npm-command-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/npm-command-memo/</guid><pubDate>Mon, 30 Nov 2020 14:01:00 GMT</pubDate><content:encoded>&lt;p&gt;★初期化（package.jsonができる）&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;★package.json の内容に従ってインストール&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;★パッケージ追加&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm install パッケージ名&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;（—saveいらない）&lt;/p&gt;
+&lt;p&gt;★パッケージ追加（開発用）&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm install --save-dev パッケージ名&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;★パッケージ追加（グローバル）&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm install --global  パッケージ名&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[yarn コマンドメモ]]></title><description><![CDATA[★初期化（package.jsonができる） ★package.json の内容に従ってインストール ★パッケージ追加 ★パッケージ追加（開発用） ★パッケージ追加（グローバル）]]></description><link>https://asakuchi.github.io/yarn-command-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/yarn-command-memo/</guid><pubDate>Mon, 30 Nov 2020 14:01:00 GMT</pubDate><content:encoded>&lt;p&gt;★初期化（package.jsonができる）&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;★package.json の内容に従ってインストール&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;★パッケージ追加&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add パッケージ名&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;★パッケージ追加（開発用）&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add --dev パッケージ名&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;★パッケージ追加（グローバル）&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn global install パッケージ名&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item></channel></rss>
