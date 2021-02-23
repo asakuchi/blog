@@ -1,4 +1,62 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 16 Feb 2021 13:43:17 GMT</lastBuildDate><item><title><![CDATA[Google App Engine ことはじめ]]></title><description><![CDATA[チュートリアルについて Google Cloud Platform にアクセスして、
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 23 Feb 2021 11:20:53 GMT</lastBuildDate><item><title><![CDATA[nodenv default-packages]]></title><description><![CDATA[default-packages とは ここにパッケージ名を記載しておくと、したときに自動的にグローバルインストールしてくれる。  上記ファイルでタイプミスすると  でエラーが起きるので注意。]]></description><link>https://asakuchi.github.io/nodenv-default-packages/</link><guid isPermaLink="false">https://asakuchi.github.io/nodenv-default-packages/</guid><pubDate>Sun, 21 Feb 2021 10:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;default-packages とは&lt;/h1&gt;
+&lt;p&gt;ここにパッケージ名を記載しておくと、&lt;code class=&quot;language-text&quot;&gt;nodenv install&lt;/code&gt;したときに自動的にグローバルインストールしてくれる。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;$(nodenv root)/default-packages&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn
+typescript
+ts-node
+typesync&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上記ファイルでタイプミスすると &lt;code class=&quot;language-text&quot;&gt;nodenv install&lt;/code&gt; でエラーが起きるので注意。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;user1@apricot:~$ nodenv install 14.4.0
+nodenv: /home/user1/.anyenv/envs/nodenv/versions/14.4.0 already exists
+continue with installation? (y/N) y
+Downloading node-v14.4.0-linux-x64.tar.gz...
+-&amp;gt; https://nodejs.org/dist/v14.4.0/node-v14.4.0-linux-x64.tar.gz
+Installing node-v14.4.0-linux-x64...
+Installed node-v14.4.0-linux-x64 to /home/user1/.anyenv/envs/nodenv/versions/14.4.0
+
+npm ERR! code E404
+npm ERR! 404 Not Found - GET https://registry.npmjs.org/typesyn - Not found
+npm ERR! 404
+npm ERR! 404  &amp;#39;typesyn@latest&amp;#39; is not in the npm registry.
+npm ERR! 404 You should bug the author to publish it (or use the name yourself!)
+npm ERR! 404
+npm ERR! 404 Note that you can also install from a
+npm ERR! 404 tarball, folder, http url, or git url.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/user1/.npm/_logs/2021-02-21T13_47_44_661Z-debug.log&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[WSL2]]></title><description><![CDATA[インストール Windows でフロントエンドの開発環境を作る手順 https://github.com/oukayuka/Riakuto-StartingReact-ja3.1/blob/master/extra/build-win-env.md WSL2の初歩メモ https…]]></description><link>https://asakuchi.github.io/wsl-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/wsl-memo/</guid><pubDate>Sun, 21 Feb 2021 09:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;インストール&lt;/h1&gt;
+&lt;p&gt;Windows でフロントエンドの開発環境を作る手順&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/oukayuka/Riakuto-StartingReact-ja3.1/blob/master/extra/build-win-env.md&quot;&gt;https://github.com/oukayuka/Riakuto-StartingReact-ja3.1/blob/master/extra/build-win-env.md&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;WSL2の初歩メモ&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://qiita.com/rubytomato@github/items/a290ecef2ea86ea8350f&quot;&gt;https://qiita.com/rubytomato@github/items/a290ecef2ea86ea8350f&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;バージョン確認&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;gt; wsl --list --verbose
+  NAME                   STATE           VERSION
+* docker-desktop-data    Running         2
+  Ubuntu                 Running         2
+  docker-desktop         Running         2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Docker Desktop をインストールしたときに WSL をごにょごにょしてたので大丈夫かなぁと思って手順進めちゃったけど、Ubuntu のインストール後に確認したら VERSION が 1 だったのでやり直した・・・。&lt;/p&gt;
+&lt;h1&gt;エラー 0x80073D05&lt;/h1&gt;
+&lt;p&gt;何度もインストールと削除を繰り返してたらこのエラーが発生した。
+キャッシュの問題とのこと。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://answers.microsoft.com/ja-jp/windows/forum/windows8_1-winapps-social/error-code-0x80073d05/dca92092-25d8-4a09-8b62-f3c769c3e111&quot;&gt;https://answers.microsoft.com/ja-jp/windows/forum/windows8_1-winapps-social/error-code-0x80073d05/dca92092-25d8-4a09-8b62-f3c769c3e111&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt; ・キャッシュクリア
+Windows キー + R キーを押して [ファイル名を指定して実行] を起動 &gt; 「wsreset.exe」と入力 ＞  [OK]
+をクリック。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;これの後にOS再起動で解消した。&lt;/p&gt;
+&lt;h1&gt;WSL2内のサーバにWindowsからアクセスする&lt;/h1&gt;
+&lt;p&gt;WSL2内のサーバに localhost で Windows からアクセスできない。
+IP指定ならできる。&lt;/p&gt;
+&lt;p&gt;.wsconfig に以下を追記することで localhost でアクセスできるようになる。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;localhostForwarding=True&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;参考：
+&lt;a href=&quot;https://qiita.com/snaka/items/a8eee4cfc8f7d733e6ab&quot;&gt;https://qiita.com/snaka/items/a8eee4cfc8f7d733e6ab&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;※ 2021/02/23 追記&lt;/p&gt;
+&lt;p&gt;localhost でアクセスできなくなった・・・。&lt;/p&gt;
+&lt;p&gt;.wsconfig の localhostForwarding を消したら localhost でアクセスできるようになった。
+どういうことなの・・・。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Google App Engine ことはじめ]]></title><description><![CDATA[チュートリアルについて Google Cloud Platform にアクセスして、
 ナビゲーションメニューから App Engine をクリック
 ↓これは僕のプロジェクトだけど、 https://console.cloud.google.com/home?authuser=…]]></description><link>https://asakuchi.github.io/quick-start-google-app-engine/</link><guid isPermaLink="false">https://asakuchi.github.io/quick-start-google-app-engine/</guid><pubDate>Wed, 03 Feb 2021 09:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;チュートリアルについて&lt;/h1&gt;
 &lt;p&gt;Google Cloud Platform にアクセスして、
