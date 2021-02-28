@@ -1,4 +1,44 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 23 Feb 2021 11:48:50 GMT</lastBuildDate><item><title><![CDATA[nodenv default-packages]]></title><description><![CDATA[default-packages とは ここにパッケージ名を記載しておくと、したときに自動的にグローバルインストールしてくれる。  上記ファイルでタイプミスすると  でエラーが起きるので注意。]]></description><link>https://asakuchi.github.io/nodenv-default-packages/</link><guid isPermaLink="false">https://asakuchi.github.io/nodenv-default-packages/</guid><pubDate>Sun, 21 Feb 2021 10:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;default-packages とは&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 28 Feb 2021 02:09:33 GMT</lastBuildDate><item><title><![CDATA[Lint メモ]]></title><description><![CDATA[ESLint インストールされているバージョン確認 package のアップグレード アップグレードしたい package を矢印キーで選んでスペースで選択し、Enter で決定。 ESLint 設定ファイル Prettier インストール .eslintrc.js…]]></description><link>https://asakuchi.github.io/lint-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/lint-memo/</guid><pubDate>Wed, 24 Feb 2021 22:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;ESLint&lt;/h1&gt;
+&lt;p&gt;インストールされているバージョン確認&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ npm ls eslint&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;package のアップグレード&lt;/h1&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ yarn upgrade-interactive --latest&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;アップグレードしたい package を矢印キーで選んでスペースで選択し、Enter で決定。&lt;/p&gt;
+&lt;h1&gt;ESLint 設定ファイル&lt;/h1&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn eslint --init
+
+✔ How would you like to use ESLint? · style
+✔ What type of modules does your project use? · esm
+✔ Which framework does your project use? · react
+✔ Does your project use TypeScript? · No / Yes
+✔ Where does your code run? · browser
+✔ How would you like to define a style for your project? · guide
+✔ Which style guide do you want to follow? · airbnb
+✔ What format do you want your config file to be in? · JavaScript
+Checking peerDependencies of eslint-config-airbnb@latest
+Local ESLint installation not found.
+The config that you&amp;#39;ve selected requires the following dependencies:
+
+eslint-plugin-react@^7.21.5 @typescript-eslint/eslint-plugin@latest eslint-config-airbnb@latest eslint@^5.16.0 || ^6.8.0 || ^7.2.0 eslint-plugin-import@^2.22.1 eslint-plugin-jsx-a11y@^6.4.1 eslint-plugin-react-hooks@^4 || ^3 || ^2.3.0 || ^1.7.0 @typescript-eslint/parser@latest
+✔ Would you like to install them now with npm? · No / Yes&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ yarn add -D eslint-plugin-react @typescript-eslint/eslint-plugin \
+ eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y \
+ eslint-plugin-react-hooks @typescript-eslint/parser
+$ typesync
+$ yarn&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Prettier&lt;/h1&gt;
+&lt;p&gt;インストール&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add -D prettier eslint-config-prettier
+typesync
+yarn&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;.eslintrc.js の追記&lt;/p&gt;
+&lt;p&gt;extends に ‘prettier’ を追加&lt;/p&gt;
+&lt;p&gt;eslint-config-prettier の 8.0.0 からこれだけでよくなった。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/prettier/eslint-config-prettier/blob/main/CHANGELOG.md#version-800-2021-02-21&quot;&gt;https://github.com/prettier/eslint-config-prettier/blob/main/CHANGELOG.md#version-800-2021-02-21&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ESLintのルールとPrettierのルールの競合の確認&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npx eslint-config-prettier &amp;#39;src/**/*.{js,jsx,ts,tsx}&amp;#39;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;stylelint&lt;/h1&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ yarn add -D stylelint stylelint-config-standard stylelint-order stylelint-config-recess-order&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[nodenv default-packages]]></title><description><![CDATA[default-packages とは ここにパッケージ名を記載しておくと、したときに自動的にグローバルインストールしてくれる。  上記ファイルでタイプミスすると  でエラーが起きるので注意。]]></description><link>https://asakuchi.github.io/nodenv-default-packages/</link><guid isPermaLink="false">https://asakuchi.github.io/nodenv-default-packages/</guid><pubDate>Sun, 21 Feb 2021 10:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;default-packages とは&lt;/h1&gt;
 &lt;p&gt;ここにパッケージ名を記載しておくと、&lt;code class=&quot;language-text&quot;&gt;nodenv install&lt;/code&gt;したときに自動的にグローバルインストールしてくれる。&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;$(nodenv root)/default-packages&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn
@@ -53,10 +93,10 @@ IP指定ならできる。&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;localhostForwarding=True&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;参考：
 &lt;a href=&quot;https://qiita.com/snaka/items/a8eee4cfc8f7d733e6ab&quot;&gt;https://qiita.com/snaka/items/a8eee4cfc8f7d733e6ab&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;※ 2021/02/23 追記&lt;/p&gt;
-&lt;p&gt;localhost でアクセスできなくなった・・・。&lt;/p&gt;
-&lt;p&gt;.wsconfig の localhostForwarding を消したら localhost でアクセスできるようになった。
-どういうことなの・・・。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Google App Engine ことはじめ]]></title><description><![CDATA[チュートリアルについて Google Cloud Platform にアクセスして、
+&lt;h1&gt;たまにつながらない&lt;/h1&gt;
+&lt;p&gt;Windows を再起動すると localhost でアクセスできなくなっていることがある。
+原因はわからないが・・・WSL2を再起動するとつながるようになる。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;wsl.exe --shutdown&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Google App Engine ことはじめ]]></title><description><![CDATA[チュートリアルについて Google Cloud Platform にアクセスして、
 ナビゲーションメニューから App Engine をクリック
 ↓これは僕のプロジェクトだけど、 https://console.cloud.google.com/home?authuser=…]]></description><link>https://asakuchi.github.io/quick-start-google-app-engine/</link><guid isPermaLink="false">https://asakuchi.github.io/quick-start-google-app-engine/</guid><pubDate>Wed, 03 Feb 2021 09:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;チュートリアルについて&lt;/h1&gt;
 &lt;p&gt;Google Cloud Platform にアクセスして、
