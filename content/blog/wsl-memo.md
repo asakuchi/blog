@@ -54,3 +54,12 @@ localhostForwarding=True
 
 参考：
 https://qiita.com/snaka/items/a8eee4cfc8f7d733e6ab
+
+# たまにつながらない
+
+Windows を再起動すると localhost でアクセスできなくなっていることがある。
+原因はわからないが・・・WSL2を再起動するとつながるようになる。
+
+```
+wsl.exe --shutdown
+```
