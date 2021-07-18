@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 18 Jul 2021 06:12:08 GMT</lastBuildDate><item><title><![CDATA[Rust filterの中の&&について]]></title><description><![CDATA[これ何 rustlings の iterators5.rs を解いているときの疑問。 これて test 通ったのだが、  （二重のアンパサンド）は何か正しくないような・・・。
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 18 Jul 2021 06:20:57 GMT</lastBuildDate><item><title><![CDATA[Rust filterの中の&&について]]></title><description><![CDATA[これ何 rustlings の iterators5.rs を解いているときの疑問。 これて test 通ったのだが、  （二重のアンパサンド）は何か正しくないような・・・。
 もしくは（二重のアスタリスク）？ trait.Iterator.html#method.filter…]]></description><link>https://asakuchi.github.io/rust/double-ampersand-in-iterator/</link><guid isPermaLink="false">https://asakuchi.github.io/rust/double-ampersand-in-iterator/</guid><pubDate>Thu, 15 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;これ何&lt;/h1&gt;
 &lt;p&gt;rustlings の iterators5.rs を解いているときの疑問。&lt;/p&gt;
 &lt;p&gt;これて test 通ったのだが、 &lt;code class=&quot;language-text&quot;&gt;&amp;amp;&amp;amp;&lt;/code&gt; （二重のアンパサンド）は何か正しくないような・・・。
@@ -22,25 +22,7 @@
     &lt;span class=&quot;token comment&quot;&gt;// map = { &quot;variables1&quot;: Complete, &quot;from_str&quot;: None, ... }&lt;/span&gt;
 
     map&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token closure-params&quot;&gt;&lt;span class=&quot;token closure-punctuation punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt;x&lt;span class=&quot;token closure-punctuation punctuation&quot;&gt;|&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;x &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; value&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Rust collectついて]]></title><description><![CDATA[これ何 rustlings の iterators3.rs のこの挙動。 collect の型パラメータによって戻り値が変わる。 Err が混じってる場合。 collect https://doc.rust-lang.org/std/iter/trait.Iterator…]]></description><link>https://asakuchi.github.io/rust/collect/</link><guid isPermaLink="false">https://asakuchi.github.io/rust/collect/</guid><pubDate>Mon, 12 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;これ何&lt;/h1&gt;
-&lt;p&gt;rustlings の iterators3.rs のこの挙動。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;rust&quot;&gt;&lt;pre class=&quot;language-rust&quot;&gt;&lt;code class=&quot;language-rust&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token macro property&quot;&gt;vec!&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;297&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;38502&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;81&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;into_iter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token closure-params&quot;&gt;&lt;span class=&quot;token closure-punctuation punctuation&quot;&gt;|&lt;/span&gt;n&lt;span class=&quot;token closure-punctuation punctuation&quot;&gt;|&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;divide&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;collect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Vec&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;_&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1426&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token macro property&quot;&gt;vec!&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;297&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;38502&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;81&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;into_iter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token closure-params&quot;&gt;&lt;span class=&quot;token closure-punctuation punctuation&quot;&gt;|&lt;/span&gt;n&lt;span class=&quot;token closure-punctuation punctuation&quot;&gt;|&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;divide&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;collect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Vec&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;_&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;DivisionError&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;token class-name&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1426&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;collect の型パラメータによって戻り値が変わる。&lt;/p&gt;
-&lt;p&gt;Err が混じってる場合。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;rust&quot;&gt;&lt;pre class=&quot;language-rust&quot;&gt;&lt;code class=&quot;language-rust&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token macro property&quot;&gt;vec!&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;297&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;38502&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;81&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;28&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;into_iter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token closure-params&quot;&gt;&lt;span class=&quot;token closure-punctuation punctuation&quot;&gt;|&lt;/span&gt;n&lt;span class=&quot;token closure-punctuation punctuation&quot;&gt;|&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;divide&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;collect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Vec&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;_&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1426&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Ok&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Err&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;NotDivisible&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;NotDivisibleError&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; dividend&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;28&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; divisor&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;27&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token macro property&quot;&gt;vec!&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;297&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;38502&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;81&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;28&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;into_iter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token closure-params&quot;&gt;&lt;span class=&quot;token closure-punctuation punctuation&quot;&gt;|&lt;/span&gt;n&lt;span class=&quot;token closure-punctuation punctuation&quot;&gt;|&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;divide&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;collect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Vec&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;_&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;DivisionError&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;token class-name&quot;&gt;Err&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;NotDivisible&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;NotDivisibleError&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; dividend&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;28&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; divisor&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;27&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;collect&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.collect&quot;&gt;https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.collect&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;rust&quot;&gt;&lt;pre class=&quot;language-rust&quot;&gt;&lt;code class=&quot;language-rust&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token closure-params&quot;&gt;&lt;span class=&quot;token closure-punctuation punctuation&quot;&gt;|&lt;/span&gt;n&lt;span class=&quot;token closure-punctuation punctuation&quot;&gt;|&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; n&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;collect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Vec&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;_&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
-
-&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token macro property&quot;&gt;vec!&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;into_iter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token closure-params&quot;&gt;&lt;span class=&quot;token closure-punctuation punctuation&quot;&gt;|&lt;/span&gt;n&lt;span class=&quot;token closure-punctuation punctuation&quot;&gt;|&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; n&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;collect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Option&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Vec&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;_&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;token class-name&quot;&gt;Some&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Rust 文字列について]]></title><description><![CDATA[文字列 と 文字 String Struct 文字列 https://doc.rust-lang.org/std/string/struct.String.html str プリミティブ 文字列スライス https://doc.rust-lang.org/std…]]></description><link>https://asakuchi.github.io/rust/string/</link><guid isPermaLink="false">https://asakuchi.github.io/rust/string/</guid><pubDate>Sun, 11 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;文字列 と 文字&lt;/h1&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Rust 文字列について]]></title><description><![CDATA[文字列 と 文字 String Struct 文字列 https://doc.rust-lang.org/std/string/struct.String.html str プリミティブ 文字列スライス https://doc.rust-lang.org/std…]]></description><link>https://asakuchi.github.io/rust/string/</link><guid isPermaLink="false">https://asakuchi.github.io/rust/string/</guid><pubDate>Sun, 11 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;文字列 と 文字&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;String&lt;/p&gt;
@@ -127,93 +109,7 @@ String と str はどう組み合わせてもOK。&lt;/p&gt;
 &lt;h1&gt;モジュール 5: ウェブアプリケーションに対話性を追加する&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;このモジュールでは、 API を呼び出し、カスタム入力テキストを表示できるように静的ウェブサイトを変更します。&lt;/p&gt;
-&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[React メモ]]></title><description><![CDATA[プロジェクトを作るときの共通設定 プロジェクト作成 TypeScript 最新化 Lint 導入 package インストール ファイルコピー .eslintignore .eslintrc.js .prettierignore .prettierrc.js…]]></description><link>https://asakuchi.github.io/react-starter-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/react-starter-memo/</guid><pubDate>Tue, 02 Mar 2021 04:00:00 GMT</pubDate><content:encoded>&lt;p&gt;プロジェクトを作るときの共通設定&lt;/p&gt;
-&lt;h1&gt;プロジェクト作成&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npx create-react-app [app-name] --template typescript&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;TypeScript 最新化&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn upgrade typescript@latest&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;Lint 導入&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn eslint --init
-
-# 選択肢
-To check syntax, find problems, and enforce code style
-JavaScript modules (import/export)
-React
-Yes
-Browser
-Use a popular style guide
-Airbnb: https://github.com/airbnb/javascript
-JavaScript
-No&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;package インストール&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add -D eslint-plugin-react @typescript-eslint/eslint-plugin \
- eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y \
- eslint-plugin-react-hooks @typescript-eslint/parser \
- prettier eslint-config-prettier \
- stylelint stylelint-config-standard stylelint-order stylelint-config-recess-order \
- eslint-plugin-prefer-arrow \
- husky lint-staged \
- typesync
-
-# ルーティングするなら
-yarn add react-router react-router-dom
-# titleタグ書き換え(ルーティングするなら必要)
-yarn add react-helmet
-# redux 必要なら
-yarn add redux react-redux
-# CSS フレームワーク
-yarn add semantic-ui-react semantic-ui-css&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;ファイルコピー&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;.eslintignore&lt;/li&gt;
-&lt;li&gt;.eslintrc.js&lt;/li&gt;
-&lt;li&gt;.prettierignore&lt;/li&gt;
-&lt;li&gt;.prettierrc.js&lt;/li&gt;
-&lt;li&gt;.stylelintrc.js&lt;/li&gt;
-&lt;li&gt;tsconfig.eslint.json&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;以下は説明&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1&gt;Lint 導入&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn eslint --init
-
-# 選択肢
-To check syntax, find problems, and enforce code style
-JavaScript modules (import/export)
-React
-Yes
-Browser
-Use a popular style guide
-Airbnb: https://github.com/airbnb/javascript
-JavaScript
-No&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add -D eslint-plugin-react @typescript-eslint/eslint-plugin \
- eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y \
- eslint-plugin-react-hooks @typescript-eslint/parser&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;tsconfig.eslint.json&lt;/code&gt; 作成
-&lt;code class=&quot;language-text&quot;&gt;.eslintignore&lt;/code&gt; 作成&lt;/p&gt;
-&lt;h1&gt;Prettier 導入&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add -D prettier eslint-config-prettier&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.prettierrc&lt;/code&gt; 作成&lt;/p&gt;
-&lt;h1&gt;stylelint 導入&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add -D stylelint stylelint-config-standard stylelint-order stylelint-config-recess-order&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;ESLint プラグイン&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn -D add eslint-plugin-prefer-arrow&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;commit 時の構文チェック&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add -D husky lint-staged&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add -D typesync&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;React Router&lt;/h1&gt;
-&lt;p&gt;ルーティングするなら&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add react-router react-router-dom&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;Redux&lt;/h1&gt;
-&lt;p&gt;必要なら&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add redux react-redux&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;Semantic UI React&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add semantic-ui-react semantic-ui-css&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;React Helmet&lt;/h1&gt;
-&lt;p&gt;title を書き換えるなら
-（ルーティングするならいる）&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add react-helmet&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Lint メモ]]></title><description><![CDATA[ESLint インストールされているバージョン確認 package のアップグレード アップグレードしたい package を矢印キーで選んでスペースで選択し、Enter で決定。 ESLint 設定ファイル Prettier インストール .eslintrc.js…]]></description><link>https://asakuchi.github.io/lint-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/lint-memo/</guid><pubDate>Wed, 24 Feb 2021 22:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;ESLint&lt;/h1&gt;
+&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[Lint メモ]]></title><description><![CDATA[ESLint インストールされているバージョン確認 package のアップグレード アップグレードしたい package を矢印キーで選んでスペースで選択し、Enter で決定。 ESLint 設定ファイル Prettier インストール .eslintrc.js…]]></description><link>https://asakuchi.github.io/lint-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/lint-memo/</guid><pubDate>Wed, 24 Feb 2021 22:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;ESLint&lt;/h1&gt;
 &lt;p&gt;インストールされているバージョン確認&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ npm ls eslint&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h1&gt;package のアップグレード&lt;/h1&gt;
@@ -341,151 +237,7 @@ ogle.com/apis/api/cloudbuild.googleapis.com/overview?project=asakuchi-sandbox th
 &lt;p&gt;課金を停止したかったらこれ&lt;/p&gt;
 &lt;h1&gt;Google Cloud SDK&lt;/h1&gt;
 &lt;p&gt;ローカルで操作したかったらこれ？&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://cloud.google.com/sdk/docs/install#interactive?hl=ja&quot;&gt;https://cloud.google.com/sdk/docs/install#interactive?hl=ja&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[firebase init]]></title><description><![CDATA[Hostingを選んで対応するGithubリポジトリを入力するだけで、
-簡単にデプロイできました。]]></description><link>https://asakuchi.github.io/firebase/init/</link><guid isPermaLink="false">https://asakuchi.github.io/firebase/init/</guid><pubDate>Tue, 19 Jan 2021 11:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hostingを選んで対応するGithubリポジトリを入力するだけで、
-簡単にデプロイできました。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ firebase init
-
-     ######## #### ########  ######## ########     ###     ######  ########
-     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
-     ######    ##  ########  ######   ########  #########  ######  ######
-     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
-     ##       #### ##     ## ######## ########  ##     ##  ######  ########
-
-You&amp;#39;re about to initialize a Firebase project in this directory:
-
-  C:\Users\user1\Documents\git\study\firebase-sandbox
-
-? Are you ready to proceed? Yes
-? Which Firebase CLI features do you want to set up for this folder? Press Space to select features,
- then Enter to confirm your choices. Hosting: Configure and deploy Firebase Hosting sites
-
-=== Project Setup
-
-First, let&amp;#39;s associate this project directory with a Firebase project.
-You can create multiple project aliases by running firebase use --add,
-but for now we&amp;#39;ll just set up a default project.
-
-? Please select an option: Use an existing project
-? Select a default Firebase project for this directory: asakuchi-sandbox (asakuchi-sandbox)
-i  Using project asakuchi-sandbox (asakuchi-sandbox)
-
-=== Hosting Setup
-
-Your public directory is the folder (relative to your project directory) that
-will contain Hosting assets to be uploaded with firebase deploy. If you
-have a build process for your assets, use your build&amp;#39;s output directory.
-
-? What do you want to use as your public directory? public
-? Configure as a single-page app (rewrite all urls to /index.html)? Yes
-? Set up automatic builds and deploys with GitHub? Yes
-+  Wrote public/index.html
-
-i  Didn&amp;#39;t detect a .git folder. Assuming C:\Users\user1\Documents\git\study\firebase-sandbox is the
-project root.
-i  Authorizing with GitHub to upload your service account to a GitHub repository&amp;#39;s secrets store.
-
-Visit this URL on this device to log in:
-https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&amp;amp;state=776245770&amp;amp;redirect_uri
-=http%3A%2F%2Flocalhost%3A9005&amp;amp;scope=read%3Auser%20repo%20public_repo
-
-Waiting for authentication...
-
-+  Success! Logged into GitHub as asakuchi
-
-? For which GitHub repository would you like to set up a GitHub workflow? (format: user/repository)
-asakuchi/firebase-sandbox
-
-+  Created service account github-action-330757911 with Firebase Hosting admin permissions.
-+  Uploaded service account JSON to GitHub as secret FIREBASE_SERVICE_ACCOUNT_ASAKUCHI_SANDBOX.
-i  You can manage your secrets at https://github.com/asakuchi/firebase-sandbox/settings/secrets.
-
-? Set up the workflow to run a build script before every deploy? Yes
-? What script should be run before every deploy?
-
-+  Created workflow file C:\Users\user1\Documents\git\study\firebase-sandbox\.github/workflows/fireb
-ase-hosting-pull-request.yml
-? Set up automatic deployment to your site&amp;#39;s live channel when a PR is merged? Yes
-? What is the name of the GitHub branch associated with your site&amp;#39;s live channel? main
-
-+  Created workflow file C:\Users\user1\Documents\git\study\firebase-sandbox\.github/workflows/fireb
-ase-hosting-merge.yml
-
-i  Action required: Visit this URL to revoke authorization for the Firebase CLI GitHub OAuth App:
-https://github.com/settings/connections/applications/89cf50f02ac6aaed3484
-i  Action required: Push any new workflow file(s) to your repo
-
-i  Writing configuration info to firebase.json...
-i  Writing project information to .firebaserc...
-i  Writing gitignore file to .gitignore...
-
-+  Firebase initialization complete!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[firebase-tools loginコマンドでエラー]]></title><description><![CDATA[firebase-toolsのインストール さっそくログインしてみるもエラー  をつけてみるも改善せず・・・。
-Paste authorization code here って言われても即エラーになるから貼り付けるタイミングないんですが？？ そのものズバリなissue…]]></description><link>https://asakuchi.github.io/firebase/error-in-login/</link><guid isPermaLink="false">https://asakuchi.github.io/firebase/error-in-login/</guid><pubDate>Tue, 19 Jan 2021 10:00:00 GMT</pubDate><content:encoded>&lt;p&gt;firebase-toolsのインストール&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm install -g firebase-tools&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;さっそくログインしてみるもエラー&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ firebase login
-i  Firebase optionally collects CLI usage and error reporting information to help improve our produc
-ts. Data is collected in accordance with Google&amp;#39;s privacy policy (https://policies.google.com/privac
-y) and is not used to identify you.
-
-? Allow Firebase to collect CLI usage and error reporting information? Yes
-i  To change your data collection preference at any time, run `firebase logout` and log in again.
-
-Visit this URL on this device to log in:
-https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.ap
-ps.googleusercontent.com&amp;amp;scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatf
-ormprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.google
-apis.com%2Fauth%2Fcloud-platform&amp;amp;response_type=code&amp;amp;state=989726811&amp;amp;redirect_uri=http%3A%2F%2Flocalh
-ost%3A9005
-
-Waiting for authentication...
-
-Error: An unexpected error has occurred.
-
-Having trouble? Try again or contact support with contents of firebase-debug.log&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;--no-localhost&lt;/code&gt; をつけてみるも改善せず・・・。
-Paste authorization code here って言われても即エラーになるから貼り付けるタイミングないんですが？？&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ firebase login --no-localhost
-i  Firebase optionally collects CLI usage and error reporting information to help improve our produc
-ts. Data is collected in accordance with Google&amp;#39;s privacy policy (https://policies.google.com/privac
-y) and is not used to identify you.
-
-? Allow Firebase to collect CLI usage and error reporting information? Yes
-i  To change your data collection preference at any time, run `firebase logout` and log in again.
-
-Visit this URL on any device to log in:
-https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.ap
-ps.googleusercontent.com&amp;amp;scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatf
-ormprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.google
-apis.com%2Fauth%2Fcloud-platform&amp;amp;response_type=code&amp;amp;state=492599012&amp;amp;redirect_uri=urn%3Aietf%3Awg%3Ao
-auth%3A2.0%3Aoob
-
-? Paste authorization code here:
-Error: An unexpected error has occurred.
-
-Having trouble? Try again or contact support with contents of firebase-debug.log&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;そのものズバリなissueがありました。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/firebase/firebase-tools/issues/896&quot;&gt;https://github.com/firebase/firebase-tools/issues/896&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;ログイン成功&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ firebase login
-i  Firebase optionally collects CLI usage and error reporting information to help improve our produc
-ts. Data is collected in accordance with Google&amp;#39;s privacy policy (https://policies.google.com/privac
-y) and is not used to identify you.
-
-? Allow Firebase to collect CLI usage and error reporting information? Yes
-i  To change your data collection preference at any time, run `firebase logout` and log in again.
-
-Visit this URL on this device to log in:
-https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.ap
-ps.googleusercontent.com&amp;amp;scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatf
-ormprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.google
-apis.com%2Fauth%2Fcloud-platform&amp;amp;response_type=code&amp;amp;state=813215240&amp;amp;redirect_uri=http%3A%2F%2Flocalh
-ost%3A9005
-
-Waiting for authentication...
-
-+  Success! Logged in as paleapricot.asakuchi@gmail.com&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[webpack チュートリアルをやった その2]]></title><description><![CDATA[Babel を使ってみる]]></description><link>https://asakuchi.github.io/javascript/webpack/webpack-tutorial_02/</link><guid isPermaLink="false">https://asakuchi.github.io/javascript/webpack/webpack-tutorial_02/</guid><pubDate>Wed, 09 Dec 2020 10:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Babel を使ってみる&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; -D babel-loader @babel/core @babel/preset-env&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[webpack チュートリアルをやった その1]]></title><description><![CDATA[のチュートリアルやります。 https://webpack.js.org/guides/getting-started/ Getting Started  のインストール  に build…]]></description><link>https://asakuchi.github.io/javascript/webpack/webpack-tutorial_01/</link><guid isPermaLink="false">https://asakuchi.github.io/javascript/webpack/webpack-tutorial_01/</guid><pubDate>Sun, 06 Dec 2020 10:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;webpack&lt;/code&gt; のチュートリアルやります。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://cloud.google.com/sdk/docs/install#interactive?hl=ja&quot;&gt;https://cloud.google.com/sdk/docs/install#interactive?hl=ja&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[webpack チュートリアルをやった その1]]></title><description><![CDATA[のチュートリアルやります。 https://webpack.js.org/guides/getting-started/ Getting Started  のインストール  に build…]]></description><link>https://asakuchi.github.io/javascript/webpack/webpack-tutorial_01/</link><guid isPermaLink="false">https://asakuchi.github.io/javascript/webpack/webpack-tutorial_01/</guid><pubDate>Sun, 06 Dec 2020 10:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;webpack&lt;/code&gt; のチュートリアルやります。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://webpack.js.org/guides/getting-started/&quot;&gt;https://webpack.js.org/guides/getting-started/&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Getting Started&lt;/h2&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;webpack&lt;/code&gt; のインストール&lt;/p&gt;
