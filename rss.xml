@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 18 Jul 2021 16:57:39 GMT</lastBuildDate><item><title><![CDATA[Docker のメモ]]></title><description><![CDATA[DockerHub でイメージを探す 例えば、apache https://hub.docker.com/_/httpd Dockerfiile なしで 任意のディレクトリで以下のコマンドを実行する。 index.html…]]></description><link>https://asakuchi.github.io/docker/memo/</link><guid isPermaLink="false">https://asakuchi.github.io/docker/memo/</guid><pubDate>Sun, 18 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;DockerHub でイメージを探す&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 19 Jul 2021 14:27:31 GMT</lastBuildDate><item><title><![CDATA[Docker のメモ]]></title><description><![CDATA[DockerHub でイメージを探す 例えば、apache https://hub.docker.com/_/httpd Dockerfiile なしで 任意のディレクトリで以下のコマンドを実行する。 index.html…]]></description><link>https://asakuchi.github.io/docker/memo/</link><guid isPermaLink="false">https://asakuchi.github.io/docker/memo/</guid><pubDate>Sun, 18 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;DockerHub でイメージを探す&lt;/h1&gt;
 &lt;p&gt;例えば、apache&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://hub.docker.com/_/httpd&quot;&gt;https://hub.docker.com/_/httpd&lt;/a&gt;&lt;/p&gt;
 &lt;h1&gt;Dockerfiile なしで&lt;/h1&gt;
@@ -20,7 +20,35 @@ docker container stop cc32354cdbd5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;コンテナ削除&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;docker container &lt;span class=&quot;token function&quot;&gt;rm&lt;/span&gt; my-apache-app
 &lt;span class=&quot;token comment&quot;&gt;# or&lt;/span&gt;
-docker container &lt;span class=&quot;token function&quot;&gt;rm&lt;/span&gt; cc32354cdbd5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Rust filterの中の&&について]]></title><description><![CDATA[これ何 rustlings の iterators5.rs を解いているときの疑問。 これて test 通ったのだが、  （二重のアンパサンド）は何か正しくないような・・・。
+docker container &lt;span class=&quot;token function&quot;&gt;rm&lt;/span&gt; cc32354cdbd5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Rust VSCode 拡張機能のインストールでエラー]]></title><description><![CDATA[VSCode 拡張機能 に必要なコンポーネントがインストールできない 新しい環境に拡張機能を入れたら右下にポップアップで「必要なコンポーネントインストールする？」みたいなのが出てきたので、言われるがままにインストールするとエラー発生。 解決策 https://github.com…]]></description><link>https://asakuchi.github.io/rust/rust-vscode/</link><guid isPermaLink="false">https://asakuchi.github.io/rust/rust-vscode/</guid><pubDate>Sun, 18 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;VSCode 拡張機能 に必要なコンポーネントがインストールできない&lt;/h1&gt;
+&lt;p&gt;新しい環境に拡張機能を入れたら右下にポップアップで「必要なコンポーネントインストールする？」みたいなのが出てきたので、言われるがままにインストールするとエラー発生。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; Executing task: rustup component &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; rust-src --toolchain stable-x86_64-pc-windows-msvc &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;
+
+info: downloading component &lt;span class=&quot;token string&quot;&gt;&apos;rust-src&apos;&lt;/span&gt;
+info: installing component &lt;span class=&quot;token string&quot;&gt;&apos;rust-src&apos;&lt;/span&gt;
+info: rolling back changes
+error: failed to &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; component: &lt;span class=&quot;token string&quot;&gt;&apos;rust-src&apos;&lt;/span&gt;, detected conflict: &lt;span class=&quot;token string&quot;&gt;&apos;lib/rustlib/src/rust/Cargo.lock&apos;&lt;/span&gt;
+ターミナル プロセス &lt;span class=&quot;token string&quot;&gt;&quot;C:\Program Files\Git&lt;span class=&quot;token entity&quot; title=&quot;\b&quot;&gt;\b&lt;/span&gt;in&lt;span class=&quot;token entity&quot; title=&quot;\b&quot;&gt;\b&lt;/span&gt;ash.exe &apos;-c&apos;, &apos;rustup component add rust-src --toolchain stable-x86_64-pc-windows-msvc&apos;&quot;&lt;/span&gt; が終了コード &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; で終了しました。
+
+ターミナルはタスクで再利用されます、閉じるには任意のキーを押してください。&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;解決策&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/rust-lang/rls/issues/1587&quot;&gt;https://github.com/rust-lang/rls/issues/1587&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;「toolchain を reinstalling してね」
+どうやって？？&lt;/p&gt;
+&lt;h1&gt;toolcahin を reinstalling&lt;/h1&gt;
+&lt;p&gt;rustup の help 見ながら・・・。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ rustup toolchain list
+stable-x86_64-pc-windows-msvc &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;default&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+$ rustup toolchain uninstall stable-x86_64-pc-windows-msvc
+info: uninstalling toolchain &lt;span class=&quot;token string&quot;&gt;&apos;stable-x86_64-pc-windows-msvc&apos;&lt;/span&gt;
+info: toolchain &lt;span class=&quot;token string&quot;&gt;&apos;stable-x86_64-pc-windows-msvc&apos;&lt;/span&gt; uninstalled
+
+$ rustup toolchain list
+no installed toolchains
+
+$ rustup toolchain &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; stable-x86_64-pc-windows-msvc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;VSCode 再起動して再度出てきたポップアップのボタンを押したらインストール問題なかったのでヨシ！&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Rust filterの中の&&について]]></title><description><![CDATA[これ何 rustlings の iterators5.rs を解いているときの疑問。 これて test 通ったのだが、  （二重のアンパサンド）は何か正しくないような・・・。
 もしくは（二重のアスタリスク）？ trait.Iterator.html#method.filter…]]></description><link>https://asakuchi.github.io/rust/double-ampersand-in-iterator/</link><guid isPermaLink="false">https://asakuchi.github.io/rust/double-ampersand-in-iterator/</guid><pubDate>Thu, 15 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;これ何&lt;/h1&gt;
 &lt;p&gt;rustlings の iterators5.rs を解いているときの疑問。&lt;/p&gt;
 &lt;p&gt;これて test 通ったのだが、 &lt;code class=&quot;language-text&quot;&gt;&amp;amp;&amp;amp;&lt;/code&gt; （二重のアンパサンド）は何か正しくないような・・・。
