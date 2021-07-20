@@ -65,3 +65,59 @@ docker container rm cc32354cdbd5
 ```bash
 $ docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.16 go run hello.go
 ```
+
+# 2 つのコンテナ
+
+```bash
+$ docker run -dit --name web01 -p 8080:80 httpd:2.4
+$ docker run -dit --name web02 -p 8081:80 httpd:2.4
+
+$ docker cp index02.html web02:/usr/local/apache2/htdocs
+$ docker cp index02.html web02:/usr/local/apache2/htdocs/index.html
+```
+
+```bash
+$ docker run -dit --name web01 -v "$PWD"/web01data:/usr/local/apache2/htdocs -p 8080:80 httpd:2.4
+$ docker run -dit --name web02 -p 8081:80 httpd:2.4
+
+```
+
+# マウント
+
+- バインドマウント
+  - `-v` で指定する方法
+  - ホストのディレクトリ
+- ボリュームマウント
+  - Docker エンジン上の領域
+
+# ボリューム
+
+```bash
+$ docker volume create mysqlvolume
+```
+
+```bash
+$ docker run --name db01 -dit -v mysqlvolume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mypassword mysql:5.7
+```
+
+```bash
+$ docker run --name db01 -dit --mount type=volume,src=mysqlvolume,dst=/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mypassword mysql:5.7
+```
+
+`-v` よりも `--mount` の方がよい。
+
+# バックアップ
+
+```bash
+$ docker run --rm --mount type=volume,src=mysqlvolume,dst=/src --mount type=bind,src="$PWD",dst=/dest busybox tar czvf /dest/backup.tar.gz -C /src .
+# or
+$ docker run --rm --volumes-from db01 --mount type=bind,src="$PWD",dst=/dest busybox tar czvf /dest/backup.tar.gz -C /var/lib/mysql .
+```
+
+# リストア
+
+```bash
+$ docker run --rm --mount type=volume,src=mysqlvolume,dst=/dest --mount type=bind,src="$PWD",dst=/src busybox tar xvf /src/backup.tar.gz -C /dest
+# or
+$ docker run --rm --volumes-from db01 --mount type=bind,src="$PWD",dst=/src busybox tar xvf /src/backup.tar.gz -C /var/lib/mysql
+```
