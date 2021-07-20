@@ -57,3 +57,11 @@ docker container rm my-apache-app
 # or
 docker container rm cc32354cdbd5
 ```
+
+# 1 回限りのコンテナ
+
+`--rm` をつけると実行後にコンテナが削除される。
+
+```bash
+$ docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp golang:1.16 go run hello.go
+```
