@@ -141,3 +141,62 @@ $ docker run -dit --name web02 -p 8081:80 --net mydockernet httpd:2.4
 $ docker network connect mydockernet web01
 $ docker network connect mydockernet web02
 ```
+
+<!-- # WordPress
+
+```bash
+$ docker network create wordpressnet
+
+$ docker volume create wordpress_db_volume
+
+$ docker run --name wordpress-db -dit --mount type=volume,src=wordpress_db_volume,dst=/var/lib/mysql -e MYSQL_ROOT_PASSWORD=myrootpassword -e M
+YSQL_DATABASE=wordpressdb -e MYSQL_USER=wordpressuser -e MYSQL_PASSWORD=wordpresspass --net wordpressnet mysql:5.7
+b1a6ba6d2c96930a2c67db95a57d404860c9805560d75e0e224ac84eef55c111
+
+$ docker run --name wordpress-app -dit -p 8080:80 -e WORDPRESS_DB_HOST=wordpress-db -e WORDPRESS_DB_NAME=wordpressdb -e WORDPRESS_DB_USER=wordp
+ressuser -e WORDPRESS_DB_PASSWORD=wordpresspass --net wordpressnet wordpress
+``` -->
+
+# docker-compose
+
+docker-compose.yml
+
+```yml
+version: "3"
+
+services:
+  wordpress-db:
+    image: mysql:5.7
+    volumes:
+      - wordpress_db_volume:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: myrootpassword
+      MYSQL_DATABASE: wordpressdb
+      MYSQL_USER: wordpressuser
+      MYSQL_PASSWORD: wordpresspass
+
+  wordpress-app:
+    depends_on:
+      - wordpress-db
+    image: wordpress
+    ports:
+      - 8080:80
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: wordpress-db
+      WORDPRESS_DB_NAME: wordpressdb
+      WORDPRESS_DB_USER: wordpressuser
+      WORDPRESS_DB_PASSWORD: wordpresspass
+
+volumes:
+  wordpress_db_volume:
+```
+
+```bash
+$ docker-compose up -d
+```
+
+```bash
+$ docker-compose down
+```
