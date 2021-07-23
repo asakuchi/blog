@@ -200,3 +200,22 @@ $ docker-compose up -d
 ```bash
 $ docker-compose down
 ```
+
+# コンテナから image 作成
+
+```bash
+$ docker commit webcontent mycustomed_httpd
+```
+
+# Dockerfile から image 作成
+
+Dockerfile
+
+```Dockerfile
+FROM httpd
+COPY index.html /usr/local/apache2/htdocs/
+```
+
+```bash
+$ docker build . -t myimage01
+```
