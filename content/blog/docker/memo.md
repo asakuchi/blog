@@ -219,3 +219,25 @@ COPY index.html /usr/local/apache2/htdocs/
 ```bash
 $ docker build . -t myimage01
 ```
+
+# DockerHub に登録
+
+- DockerHub にリポジトリを作る
+
+```bash
+$ docker build . -t myexample
+$ docker tag myexample paleapricot/myexample
+$ docker login
+$ docker push paleapricot/myexample
+```
+
+# Amazon ECR に登録
+
+Amazon Elastic Container Registry
+
+- ECR にリポジトリを作る
+- push コマンド等は ECR で確認できるのでそれを実行する
+  - ログイン
+  - イメージ構築
+  - タグ付け
+  - push
