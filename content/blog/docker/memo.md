@@ -241,3 +241,50 @@ Amazon Elastic Container Registry
   - イメージ構築
   - タグ付け
   - push
+
+# Kubernetes
+
+起動
+
+```bash
+$ minikube start vm-driver=docker
+```
+
+認証情報作成
+
+```bash
+$ kubectl create secret docker-registry mysecret --docker-server=server --docker-username=username --docker-password=pass
+```
+
+オブジェクトの作成
+
+```bash
+# マニフェストファイルを指定する
+$ kubectl create -f deploy.yml
+$ kubectl create -f service.yml
+```
+
+オブジェクトの確認
+
+```bash
+$ kubectl get pod
+$ kubectl get deployments
+$ kubectl get services
+```
+
+```bash
+$ minikube service my-service
+```
+
+変更を適用
+
+```bash
+$ kubectl apply -f deploy.yml --record=true
+```
+
+削除
+
+```bash
+$ kubectl delete -f deploy.yml
+$ kubectl delete -f service.yml
+```
