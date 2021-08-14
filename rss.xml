@@ -1,4 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 21 Jul 2021 14:52:02 GMT</lastBuildDate><item><title><![CDATA[Docker のメモ]]></title><description><![CDATA[DockerHub でイメージを探す 例えば、apache https://hub.docker.com/_/httpd Dockerfiile なしで 任意のディレクトリで以下のコマンドを実行する。 index.html…]]></description><link>https://asakuchi.github.io/docker/memo/</link><guid isPermaLink="false">https://asakuchi.github.io/docker/memo/</guid><pubDate>Sun, 18 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;DockerHub でイメージを探す&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[あさくちブログ]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 14 Aug 2021 01:59:09 GMT</lastBuildDate><item><title><![CDATA[nodenv の使い方]]></title><description><![CDATA[前提 anyenv がインストール済み nodenv がインストール済み anyenv アップデート Node バージョンの一覧が更新される。 バージョン一覧 インストール可能なバージョンの一覧。 インストール済みのバージョンの一覧。 特定のバージョンの Node…]]></description><link>https://asakuchi.github.io/javascript/how-to-use-nodenv/</link><guid isPermaLink="false">https://asakuchi.github.io/javascript/how-to-use-nodenv/</guid><pubDate>Fri, 13 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;前提&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;anyenv がインストール済み&lt;/li&gt;
+&lt;li&gt;nodenv がインストール済み&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;anyenv アップデート&lt;/h1&gt;
+&lt;p&gt;Node バージョンの一覧が更新される。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ anyenv update&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;バージョン一覧&lt;/h1&gt;
+&lt;p&gt;インストール可能なバージョンの一覧。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ nodenv &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; -l&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;インストール済みのバージョンの一覧。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ nodenv versions&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;特定のバージョンの Node のインストール&lt;/h1&gt;
+&lt;p&gt;install したら rehash する。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ nodenv &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;16.6&lt;/span&gt;.2
+$ nodenv rehash
+
+$ nodenv versions
+* &lt;span class=&quot;token number&quot;&gt;14.4&lt;/span&gt;.0 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;set by /home/user1/.anyenv/envs/nodenv/version&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token number&quot;&gt;15.9&lt;/span&gt;.0
+  &lt;span class=&quot;token number&quot;&gt;16.6&lt;/span&gt;.2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;バージョンの切り替え&lt;/h1&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ nodenv global &lt;span class=&quot;token number&quot;&gt;16.6&lt;/span&gt;.2
+
+$ nodenv versions
+  &lt;span class=&quot;token number&quot;&gt;14.4&lt;/span&gt;.0
+  &lt;span class=&quot;token number&quot;&gt;15.9&lt;/span&gt;.0
+* &lt;span class=&quot;token number&quot;&gt;16.6&lt;/span&gt;.2 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;set by /home/user1/.anyenv/envs/nodenv/version&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;プロジェクトごとに設定することもできる。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ nodenv local 16.6.2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;バージョン確認&lt;/h1&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ node --version
+v16.6.2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Docker のメモ]]></title><description><![CDATA[DockerHub でイメージを探す 例えば、apache https://hub.docker.com/_/httpd Dockerfiile なしで 任意のディレクトリで以下のコマンドを実行する。 index.html…]]></description><link>https://asakuchi.github.io/docker/memo/</link><guid isPermaLink="false">https://asakuchi.github.io/docker/memo/</guid><pubDate>Sun, 18 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;DockerHub でイメージを探す&lt;/h1&gt;
 &lt;p&gt;例えば、apache&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://hub.docker.com/_/httpd&quot;&gt;https://hub.docker.com/_/httpd&lt;/a&gt;&lt;/p&gt;
 &lt;h1&gt;Dockerfiile なしで&lt;/h1&gt;
@@ -68,7 +101,102 @@ $ docker run --rm --volumes-from db01 --mount &lt;span class=&quot;token assign-
 $ docker run -dit --name web02 -p &lt;span class=&quot;token number&quot;&gt;8081&lt;/span&gt;:80 --net mydockernet httpd:2.4&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;既存コンテナを追加&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ docker network connect mydockernet web01
-$ docker network connect mydockernet web02&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Rust VSCode 拡張機能のインストールでエラー]]></title><description><![CDATA[VSCode 拡張機能 に必要なコンポーネントがインストールできない 新しい環境に拡張機能を入れたら右下にポップアップで「必要なコンポーネントインストールする？」みたいなのが出てきたので、言われるがままにインストールするとエラー発生。 解決策 https://github.com…]]></description><link>https://asakuchi.github.io/rust/rust-vscode/</link><guid isPermaLink="false">https://asakuchi.github.io/rust/rust-vscode/</guid><pubDate>Sun, 18 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;VSCode 拡張機能 に必要なコンポーネントがインストールできない&lt;/h1&gt;
+$ docker network connect mydockernet web02&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;!-- # WordPress
+
+```bash
+$ docker network create wordpressnet
+
+$ docker volume create wordpress_db_volume
+
+$ docker run --name wordpress-db -dit --mount type=volume,src=wordpress_db_volume,dst=/var/lib/mysql -e MYSQL_ROOT_PASSWORD=myrootpassword -e M
+YSQL_DATABASE=wordpressdb -e MYSQL_USER=wordpressuser -e MYSQL_PASSWORD=wordpresspass --net wordpressnet mysql:5.7
+b1a6ba6d2c96930a2c67db95a57d404860c9805560d75e0e224ac84eef55c111
+
+$ docker run --name wordpress-app -dit -p 8080:80 -e WORDPRESS_DB_HOST=wordpress-db -e WORDPRESS_DB_NAME=wordpressdb -e WORDPRESS_DB_USER=wordp
+ressuser -e WORDPRESS_DB_PASSWORD=wordpresspass --net wordpressnet wordpress
+``` --&gt;
+&lt;h1&gt;docker-compose&lt;/h1&gt;
+&lt;p&gt;docker-compose.yml&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yml&quot;&gt;&lt;pre class=&quot;language-yml&quot;&gt;&lt;code class=&quot;language-yml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;3&quot;&lt;/span&gt;
+
+&lt;span class=&quot;token key atrule&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;wordpress-db&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; mysql&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5.7&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; wordpress_db_volume&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;/var/lib/mysql
+    &lt;span class=&quot;token key atrule&quot;&gt;restart&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; always
+    &lt;span class=&quot;token key atrule&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token key atrule&quot;&gt;MYSQL_ROOT_PASSWORD&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; myrootpassword
+      &lt;span class=&quot;token key atrule&quot;&gt;MYSQL_DATABASE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; wordpressdb
+      &lt;span class=&quot;token key atrule&quot;&gt;MYSQL_USER&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; wordpressuser
+      &lt;span class=&quot;token key atrule&quot;&gt;MYSQL_PASSWORD&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; wordpresspass
+
+  &lt;span class=&quot;token key atrule&quot;&gt;wordpress-app&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;depends_on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; wordpress&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;db
+    &lt;span class=&quot;token key atrule&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; wordpress
+    &lt;span class=&quot;token key atrule&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; 8080&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;80&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;restart&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; always
+    &lt;span class=&quot;token key atrule&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token key atrule&quot;&gt;WORDPRESS_DB_HOST&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; wordpress&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;db
+      &lt;span class=&quot;token key atrule&quot;&gt;WORDPRESS_DB_NAME&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; wordpressdb
+      &lt;span class=&quot;token key atrule&quot;&gt;WORDPRESS_DB_USER&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; wordpressuser
+      &lt;span class=&quot;token key atrule&quot;&gt;WORDPRESS_DB_PASSWORD&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; wordpresspass
+
+&lt;span class=&quot;token key atrule&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  wordpress_db_volume&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ docker-compose up -d&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ docker-compose down&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;コンテナから image 作成&lt;/h1&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ docker commit webcontent mycustomed_httpd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Dockerfile から image 作成&lt;/h1&gt;
+&lt;p&gt;Dockerfile&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;dockerfile&quot;&gt;&lt;pre class=&quot;language-dockerfile&quot;&gt;&lt;code class=&quot;language-dockerfile&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;FROM&lt;/span&gt; httpd
+&lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; index.html /usr/local/apache2/htdocs/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ docker build &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt; -t myimage01&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;DockerHub に登録&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;DockerHub にリポジトリを作る&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ docker build &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt; -t myexample
+$ docker tag myexample paleapricot/myexample
+$ docker login
+$ docker push paleapricot/myexample&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Amazon ECR に登録&lt;/h1&gt;
+&lt;p&gt;Amazon Elastic Container Registry&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ECR にリポジトリを作る&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;push コマンド等は ECR で確認できるのでそれを実行する&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ログイン&lt;/li&gt;
+&lt;li&gt;イメージ構築&lt;/li&gt;
+&lt;li&gt;タグ付け&lt;/li&gt;
+&lt;li&gt;push&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Kubernetes&lt;/h1&gt;
+&lt;p&gt;起動&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ minikube start vm-driver&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;docker&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;認証情報作成&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ kubectl create secret docker-registry mysecret --docker-server&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;server --docker-username&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;username --docker-password&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;pass&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;オブジェクトの作成&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# マニフェストファイルを指定する&lt;/span&gt;
+$ kubectl create -f deploy.yml
+$ kubectl create -f service.yml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;オブジェクトの確認&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ kubectl get pod
+$ kubectl get deployments
+$ kubectl get services&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ minikube &lt;span class=&quot;token function&quot;&gt;service&lt;/span&gt; my-service&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;変更を適用&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ kubectl apply -f deploy.yml --record&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;true&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;削除&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ kubectl delete -f deploy.yml
+$ kubectl delete -f service.yml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Rust VSCode 拡張機能のインストールでエラー]]></title><description><![CDATA[VSCode 拡張機能 に必要なコンポーネントがインストールできない 新しい環境に拡張機能を入れたら右下にポップアップで「必要なコンポーネントインストールする？」みたいなのが出てきたので、言われるがままにインストールするとエラー発生。 解決策 https://github.com…]]></description><link>https://asakuchi.github.io/rust/rust-vscode/</link><guid isPermaLink="false">https://asakuchi.github.io/rust/rust-vscode/</guid><pubDate>Sun, 18 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;VSCode 拡張機能 に必要なコンポーネントがインストールできない&lt;/h1&gt;
 &lt;p&gt;新しい環境に拡張機能を入れたら右下にポップアップで「必要なコンポーネントインストールする？」みたいなのが出てきたので、言われるがままにインストールするとエラー発生。&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; Executing task: rustup component &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; rust-src --toolchain stable-x86_64-pc-windows-msvc &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;
 
@@ -225,7 +353,104 @@ String と str はどう組み合わせてもOK。&lt;/p&gt;
 &lt;h1&gt;モジュール 5: ウェブアプリケーションに対話性を追加する&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;このモジュールでは、 API を呼び出し、カスタム入力テキストを表示できるように静的ウェブサイトを変更します。&lt;/p&gt;
-&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[Lint メモ]]></title><description><![CDATA[ESLint インストールされているバージョン確認 package のアップグレード アップグレードしたい package を矢印キーで選んでスペースで選択し、Enter で決定。 ESLint 設定ファイル Prettier インストール .eslintrc.js…]]></description><link>https://asakuchi.github.io/lint-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/lint-memo/</guid><pubDate>Wed, 24 Feb 2021 22:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;ESLint&lt;/h1&gt;
+&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[React メモ]]></title><description><![CDATA[プロジェクトを作るときの共通設定 プロジェクト作成 TypeScript 最新化 Lint 導入 package インストール ファイルコピー .eslintignore .eslintrc.js .prettierignore .prettierrc.js…]]></description><link>https://asakuchi.github.io/react-starter-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/react-starter-memo/</guid><pubDate>Tue, 02 Mar 2021 04:00:00 GMT</pubDate><content:encoded>&lt;p&gt;プロジェクトを作るときの共通設定&lt;/p&gt;
+&lt;h1&gt;プロジェクト作成&lt;/h1&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npx create-react-app [app-name] --template typescript&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;TypeScript 最新化&lt;/h1&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn upgrade typescript@latest&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Lint 導入&lt;/h1&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn eslint --init
+
+# 選択肢
+To check syntax, find problems, and enforce code style
+JavaScript modules (import/export)
+React
+Yes
+Browser
+Use a popular style guide
+Airbnb: https://github.com/airbnb/javascript
+JavaScript
+No&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;package インストール&lt;/h1&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add -D eslint-plugin-react @typescript-eslint/eslint-plugin \
+ eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y \
+ eslint-plugin-react-hooks @typescript-eslint/parser \
+ prettier eslint-config-prettier \
+ stylelint stylelint-config-standard stylelint-order stylelint-config-recess-order \
+ eslint-plugin-prefer-arrow \
+ husky lint-staged \
+ typesync
+
+# ルーティングするなら
+yarn add react-router react-router-dom
+# titleタグ書き換え(ルーティングするなら必要)
+yarn add react-helmet
+# redux 必要なら
+yarn add redux react-redux
+# CSS フレームワーク
+yarn add semantic-ui-react semantic-ui-css&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;ファイルコピー&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;.eslintignore&lt;/li&gt;
+&lt;li&gt;.eslintrc.js&lt;/li&gt;
+&lt;li&gt;.prettierignore&lt;/li&gt;
+&lt;li&gt;.prettierrc.js&lt;/li&gt;
+&lt;li&gt;.stylelintrc.js&lt;/li&gt;
+&lt;li&gt;tsconfig.eslint.json&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;package.json の scripts に以下を追加&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;    &lt;span class=&quot;token property&quot;&gt;&quot;fix&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;npm run -s format &amp;amp;&amp;amp; npm run -s lint:fix&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;format&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;prettier --write --loglevel=warn &apos;src/**/*.{js,jsx,ts,tsx,gql,graphql,json}&apos;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;lint&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;npm run -s lint:style; npm run -s lint:es&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;lint:fix&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;npm run -s lint:style:fix &amp;amp;&amp;amp; npm run -s lint:es:fix&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;lint:es&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;eslint &apos;src/**/*.{js,jsx,ts,tsx}&apos;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;lint:es:fix&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;eslint --fix &apos;src/**/*.{js,jsx,ts,tsx}&apos;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;lint:conflict&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;eslint-config-prettier &apos;src/**/*.{js,jsx,ts,tsx}&apos;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;lint:style&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;stylelint &apos;src/**/*.{css,less,sass,scss}&apos;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;lint:style:fix&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;stylelint --fix &apos;src/**/*.{css,less,sass,scss}&apos;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;postinstall&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;typesync&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;以下は説明&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Lint 導入&lt;/h1&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn eslint --init
+
+# 選択肢
+To check syntax, find problems, and enforce code style
+JavaScript modules (import/export)
+React
+Yes
+Browser
+Use a popular style guide
+Airbnb: https://github.com/airbnb/javascript
+JavaScript
+No&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add -D eslint-plugin-react @typescript-eslint/eslint-plugin \
+ eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y \
+ eslint-plugin-react-hooks @typescript-eslint/parser&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;tsconfig.eslint.json&lt;/code&gt; 作成
+&lt;code class=&quot;language-text&quot;&gt;.eslintignore&lt;/code&gt; 作成&lt;/p&gt;
+&lt;h1&gt;Prettier 導入&lt;/h1&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add -D prettier eslint-config-prettier&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.prettierrc&lt;/code&gt; 作成&lt;/p&gt;
+&lt;h1&gt;stylelint 導入&lt;/h1&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add -D stylelint stylelint-config-standard stylelint-order stylelint-config-recess-order&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;ESLint プラグイン&lt;/h1&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn -D add eslint-plugin-prefer-arrow&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;commit 時の構文チェック&lt;/h1&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add -D husky lint-staged&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add -D typesync&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;React Router&lt;/h1&gt;
+&lt;p&gt;ルーティングするなら&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add react-router react-router-dom&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Redux&lt;/h1&gt;
+&lt;p&gt;必要なら&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add redux react-redux&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Semantic UI React&lt;/h1&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add semantic-ui-react semantic-ui-css&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;React Helmet&lt;/h1&gt;
+&lt;p&gt;title を書き換えるなら
+（ルーティングするならいる）&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add react-helmet&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Lint メモ]]></title><description><![CDATA[ESLint インストールされているバージョン確認 package のアップグレード アップグレードしたい package を矢印キーで選んでスペースで選択し、Enter で決定。 ESLint 設定ファイル Prettier インストール .eslintrc.js…]]></description><link>https://asakuchi.github.io/lint-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/lint-memo/</guid><pubDate>Wed, 24 Feb 2021 22:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;ESLint&lt;/h1&gt;
 &lt;p&gt;インストールされているバージョン確認&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ npm ls eslint&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h1&gt;package のアップグレード&lt;/h1&gt;
