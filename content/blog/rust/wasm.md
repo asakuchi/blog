@@ -35,18 +35,12 @@ npm publish --access=public
 yarn add @asakuchi/hello-wasm
 ```
 
-bootstrap.js （エントリポイント。webpack.config.js に設定する）
-
 ```js
-import("./index.js").catch(e => console.error("Error importing `index.js`:", e))
-```
+const module = import("@asakuchi/hello-wasm")
 
-index.js
-
-```js
-import * as wasm from "@asakuchi/hello-wasm"
-
-wasm.greet("hello asakuch npm")
+module.then(js => {
+  js.greet("WebAssembly")
+})
 ```
 
 ※練習では npm に公開したけれど、実際に使うときは npm に公開しないでローカルのパスを指定するのかも。
