@@ -6,7 +6,7 @@ tags:
   - "TypeScript"
 ---
 
-# TypeScript enum
+## TypeScript enum
 
 enum というのはこういうのですね。
 

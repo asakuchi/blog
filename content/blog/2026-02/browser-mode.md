@@ -7,7 +7,7 @@ tags:
   - "Vitest"
 ---
 
-# Vitest Browser Mode
+## Vitest Browser Mode
 
 Vitest の Browser Mode はブラウザ上でテストを実行できる機能です。
 

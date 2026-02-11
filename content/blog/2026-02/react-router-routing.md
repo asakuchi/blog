@@ -7,7 +7,7 @@ tags:
   - "React Router"
 ---
 
-# React Router v7 File-based Routing
+## React Router v7 File-based Routing
 
 React Router v7 のデフォルトテンプレート（`routes.ts` での手動定義）から、Remix v2 ライクなファイルベースルーティング（`flatRoutes`）へ切り替える方法について。
 
