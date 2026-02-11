@@ -1,4 +1,339 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog RSS Feed]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 30 Jan 2026 10:03:24 GMT</lastBuildDate><item><title><![CDATA[Node.js で sleep を自分で実装しない]]></title><description><![CDATA[sleep は Node.js の標準関数でできる。 自分で実装しない。]]></description><link>https://asakuchi.github.io/javascript/sleep/</link><guid isPermaLink="false">https://asakuchi.github.io/javascript/sleep/</guid><pubDate>Thu, 29 Jan 2026 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;sleep は Node.js の標準関数でできる。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog RSS Feed]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 11 Feb 2026 17:02:57 GMT</lastBuildDate><item><title><![CDATA[TypeScript では enum を避けよう]]></title><description><![CDATA[TypeScript enum enum というのはこういうのですね。 一見問題なさそうな気はするけど、TypeScript の設計思想に反しているんですね。 https://github.com/microsoft/TypeScript/wiki/TypeScript…]]></description><link>https://asakuchi.github.io/2026-02/ts-enum/</link><guid isPermaLink="false">https://asakuchi.github.io/2026-02/ts-enum/</guid><pubDate>Tue, 10 Feb 2026 18:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;TypeScript enum&lt;/h1&gt;
+&lt;p&gt;enum というのはこういうのですね。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;&lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;enum&lt;/span&gt; Status &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  Active &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;ACTIVE&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  Inactive &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;INACTIVE&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;一見問題なさそうな気はするけど、TypeScript の設計思想に反しているんですね。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/microsoft/TypeScript/wiki/TypeScript-Design-Goals&quot;&gt;https://github.com/microsoft/TypeScript/wiki/TypeScript-Design-Goals&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;例えば「Provide additional runtime functionality.」というところ。
+enum は JavaScript にコンパイルするときにコードを生成します&lt;/p&gt;
+&lt;p&gt;特に enum は使わなければいけない機能というわけではないので避けれるなら避けましょう。&lt;/p&gt;
+&lt;p&gt;例えば、&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;&lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;enum&lt;/span&gt; Status &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  Active&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  Inactive&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;なら&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;&lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Status&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;ACTIVE&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;INACTIVE&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;これでいいし、&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;&lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;enum&lt;/span&gt; Status &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  Active &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;ACTIVE&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  Inactive &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;INACTIVE&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;なら&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;&lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; Status &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  Active&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;ACTIVE&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  Inactive&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;INACTIVE&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;これでいいですね。&lt;/p&gt;
+&lt;p&gt;だけどたまに enum で書かなければいけないライブラリがあったりする・・・。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Vitest の Browser Mode を導入]]></title><description><![CDATA[Vitest Browser Mode Vitest の Browser Mode はブラウザ上でテストを実行できる機能です。 公式サイトによると、 to help improve testing workflows and achieve more accurate and…]]></description><link>https://asakuchi.github.io/2026-02/browser-mode/</link><guid isPermaLink="false">https://asakuchi.github.io/2026-02/browser-mode/</guid><pubDate>Tue, 10 Feb 2026 17:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Vitest Browser Mode&lt;/h1&gt;
+&lt;p&gt;Vitest の Browser Mode はブラウザ上でテストを実行できる機能です。&lt;/p&gt;
+&lt;p&gt;公式サイトによると、&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;to help improve testing workflows and achieve more accurate and reliable test results.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;とのこと。&lt;/p&gt;
+&lt;h2&gt;インストールと初期設定&lt;/h2&gt;
+&lt;p&gt;以下のコマンドでインストールする。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;npx vitest init browser&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;すると Playwrightなどのインストールとともにサンプルファイルと &lt;code class=&quot;language-text&quot;&gt;vitest.browser.config.ts&lt;/code&gt; という設定ファイルが自動生成される。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ git status
+ブランチ main
+Changes not staged for commit:
+  (use &quot;git add &amp;lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &amp;lt;file&gt;...&quot; to discard changes in working directory)
+	modified:   package-lock.json
+	modified:   package.json
+
+追跡されていないファイル:
+  (use &quot;git add &amp;lt;file&gt;...&quot; to include in what will be committed)
+	vitest-example/
+	vitest.browser.config.ts
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;問題点&lt;/h2&gt;
+&lt;p&gt;さて、この状態だと問題がある。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Vitest の設定は &lt;code class=&quot;language-text&quot;&gt;vite.config.ts&lt;/code&gt; に書いているのでブラウザモード用のファイルは新しくできてほしくない。
+&lt;ul&gt;
+&lt;li&gt;👉 Vitest はテストプロジェクトが設定できるので2つのプロジェクトを作成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ロジックのテストを実行したときにブラウザのテストが動く。
+&lt;ul&gt;
+&lt;li&gt;👉 ブラウザのテストは &lt;code class=&quot;language-text&quot;&gt;.browser.test.tsx&lt;/code&gt; という命名にすることで区別する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;これらを解消するために &lt;code class=&quot;language-text&quot;&gt;vite.config.ts&lt;/code&gt; は以下のようにした。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;/// &amp;lt;reference types=&quot;vitest/config&quot; /&gt;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; reactRouter &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;@react-router/dev/vite&quot;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; playwright &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;@vitest/browser-playwright&quot;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; defineConfig &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;vite&quot;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; tsconfigPaths &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;vite-tsconfig-paths&quot;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; defaultExclude &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;vitest/config&quot;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;defineConfig&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  plugins&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;reactRouter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;tsconfigPaths&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  define&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token string-property property&quot;&gt;&quot;import.meta.vitest&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  test&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    projects&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        test&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+          name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;unit&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+          includeSource&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;app/**/*.{js,ts}&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;token comment&quot;&gt;// defaultExclude は node_modules などを除外する&lt;/span&gt;
+          exclude&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;defaultExclude&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;**/*.browser.test.{ts,tsx,js,jsx}&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        plugins&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;tsconfigPaths&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        test&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+          name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;browser&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+          include&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;app/**/*.browser.test.{ts,tsx,js,jsx}&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+          browser&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            enabled&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            provider&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;playwright&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token comment&quot;&gt;// https://vitest.dev/config/browser/playwright&lt;/span&gt;
+            instances&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; browser&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;chromium&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        plugins&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;tsconfigPaths&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;NPMスクリプトの設定&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; はそれぞれのテストが実行できるようにしておく。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;  &lt;span class=&quot;token property&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;vitest --project unit&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;test:browser&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;vitest --project browser&quot;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;テストコードを書いてみる&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;tsx&quot;&gt;&lt;pre class=&quot;language-tsx&quot;&gt;&lt;code class=&quot;language-tsx&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; useState &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;react&quot;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Counter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;count&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; setCount&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;useState&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;div&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;p&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;
+        Current count: &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;output&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;count&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;output&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;p&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;button&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;button&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;token script language-javascript&quot;&gt;&lt;span class=&quot;token script-punctuation punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;setCount&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;c &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; c &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;
+        Increment
+      &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;button&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;div&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;tsx&quot;&gt;&lt;pre class=&quot;language-tsx&quot;&gt;&lt;code class=&quot;language-tsx&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; expect&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; test &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;vitest&quot;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; render &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;vitest-browser-react&quot;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; Counter &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./Counter&quot;&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Counter&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; screen &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Counter&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; output &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; screen&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getByRole&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;status&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; button &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; screen&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getByRole&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;button&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Increment&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; expect&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;output&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toHaveTextContent&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; button&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; expect&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;output&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toHaveTextContent&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;テストできてる！&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/blog/static/3be8a6ce7b63463777e395b1f11f7680/60a1a/browser-mode.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 62.65822784810127%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAABXUlEQVR42p2R2WrDMBBF/f+flfahG4U2e6FpSWhcy5JXybZkSbdIJo7rJKVk4DJoRnOYJUjzDFmRI8lSEEpAEwqWJogZBaGxj0WDuFeWwNU5T1OGkHwjiiPcPT4goGUGUiQgOUOUMeziEOvPd+wZQVykcHmntCqRN9x79958bX1NIYX3XDe4f35CwEWNupa9eCnAWApKGfK8gFIaSrWQUkE2ynv3VlJBawNrLYw2cLaaLhHUlURVSZCYgYsKxnTJuq7BOcfBpJQ+5sxBDmZh+5rVbIFgn+ywDd9QZCGUUv7zQcPipmlQVVUfG+oXcLKZ4PbjBlyUvvUx7BIQxyaPwOkCAUY2hp0DwlpoqyFMA9lIn3PTreerDmisuTjqeSCgWgWple/OwbqRlx3w3Ih/AgEIIU6OtHiZXQd0MW2013CHy9f59cDhzo9XXl4PHP49ufJ/gG3b9ssf54Yd/gAg9fW20OA4XgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;alt text&quot;
+        title=&quot;&quot;
+        src=&quot;/blog/static/3be8a6ce7b63463777e395b1f11f7680/f058b/browser-mode.png&quot;
+        srcset=&quot;/blog/static/3be8a6ce7b63463777e395b1f11f7680/c26ae/browser-mode.png 158w,
+/blog/static/3be8a6ce7b63463777e395b1f11f7680/6bdcf/browser-mode.png 315w,
+/blog/static/3be8a6ce7b63463777e395b1f11f7680/f058b/browser-mode.png 630w,
+/blog/static/3be8a6ce7b63463777e395b1f11f7680/40601/browser-mode.png 945w,
+/blog/static/3be8a6ce7b63463777e395b1f11f7680/78612/browser-mode.png 1260w,
+/blog/static/3be8a6ce7b63463777e395b1f11f7680/60a1a/browser-mode.png 1321w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;GitHub Actions (CI) での実行&lt;/h2&gt;
+&lt;p&gt;CI環境でブラウザテストを動かすには、ブラウザ本体のインストールが必要。
+そのインストールというのが少々時間がかかるので、ここでも job を分けて並列実行することで CI の実行時間を減らす。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;// .github/workflows/test.yml
+&lt;span class=&quot;token key atrule&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  unit&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;test
+    &lt;span class=&quot;token comment&quot;&gt;#&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;# 既存のテストを書く&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;#&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;browser-test&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Browser Tests
+    &lt;span class=&quot;token key atrule&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ubuntu&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;latest
+    &lt;span class=&quot;token key atrule&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token key atrule&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; mcr.microsoft.com/playwright&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;v1.58.2&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;noble
+      &lt;span class=&quot;token key atrule&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;user 1001
+    &lt;span class=&quot;token key atrule&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; actions/checkout@v5
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; actions/setup&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;node@v6
+        &lt;span class=&quot;token key atrule&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;node-version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; lts/*
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Install dependencies
+        &lt;span class=&quot;token key atrule&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; npm ci
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Run your tests
+        &lt;span class=&quot;token key atrule&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; npm run test&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;browser&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;参考&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://vitest.dev/guide/browser/&quot;&gt;https://vitest.dev/guide/browser/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vitest.dev/guide/projects.html&quot;&gt;https://vitest.dev/guide/projects.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Vitest でインソーステスティング]]></title><description><![CDATA[Vitest In-Source Testing インソーステスティングとは、プロダクトコードとテストコードが同じファイル内に入っているもの。
+プロダクトファイルとテストファイルを行ったり来たりしなくて便利です。
+テストのために export する必要がないのも good…]]></description><link>https://asakuchi.github.io/2026-02/in-source-testing/</link><guid isPermaLink="false">https://asakuchi.github.io/2026-02/in-source-testing/</guid><pubDate>Tue, 10 Feb 2026 16:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Vitest In-Source Testing&lt;/h1&gt;
+&lt;p&gt;インソーステスティングとは、プロダクトコードとテストコードが同じファイル内に入っているもの。
+プロダクトファイルとテストファイルを行ったり来たりしなくて便利です。
+テストのために export する必要がないのも good。&lt;/p&gt;
+&lt;h2&gt;Vitest 導入&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm install -D vitest&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;diff&quot;&gt;&lt;pre class=&quot;language-diff&quot;&gt;&lt;code class=&quot;language-diff&quot;&gt;// package.json
+{
+&lt;span class=&quot;token unchanged&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt; &quot;scripts&quot;: {
+&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;   &quot;build&quot;: &quot;react-router build&quot;,
+&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;   &quot;dev&quot;: &quot;react-router dev&quot;,
+&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;   &quot;start&quot;: &quot;react-router-serve ./build/server/index.js&quot;,
+&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;   &quot;typecheck&quot;: &quot;react-router typegen &amp;amp;&amp;amp; tsc&quot;,
+&lt;/span&gt;&lt;span class=&quot;token deleted-sign deleted&quot;&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;   &quot;fix&quot;: &quot;biome check --write .&quot;
+&lt;/span&gt;&lt;span class=&quot;token inserted-sign inserted&quot;&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;   &quot;fix&quot;: &quot;biome check --write .&quot;,
+&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;   &quot;test&quot;: &quot;vitest&quot;
+&lt;/span&gt;&lt;span class=&quot;token unchanged&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt; },
+&lt;/span&gt;}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;設定&lt;/h2&gt;
+&lt;h3&gt;vite.config.ts&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;test.includeSource&lt;/code&gt; にソースファイルのパターンを指定する。
+また、プロダクションビルド時にテストコードを削除するために &lt;code class=&quot;language-text&quot;&gt;define&lt;/code&gt; で &lt;code class=&quot;language-text&quot;&gt;import.meta.vitest&lt;/code&gt; を &lt;code class=&quot;language-text&quot;&gt;undefined&lt;/code&gt; に置換する設定を入れる。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;&lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; defineConfig &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;vite&quot;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;defineConfig&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  define&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token string-property property&quot;&gt;&quot;import.meta.vitest&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;undefined&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  test&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    includeSource&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;app/**/*.{js,ts}&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;tsconfig.json&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;import.meta.vitest&lt;/code&gt; の型定義を認識させるために &lt;code class=&quot;language-text&quot;&gt;types&lt;/code&gt; を追加する。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;compilerOptions&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;types&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;vitest/importMeta&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;実装例&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;if (import.meta.vitest)&lt;/code&gt; ブロック内にテストが書ける。
+この中はプロダクションビルド時に取り除かれるのでアプリに影響なし！&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;&lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// app/utils/sum.ts&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; b
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;meta&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;vitest&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; it&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; expect &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;meta&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;vitest
+
+  &lt;span class=&quot;token function&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;test sum&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toBe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;テスト実行&lt;/h2&gt;
+&lt;p&gt;テストできてる！&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ npm test
+
+&gt; test
+&gt; vitest
+
+
+ DEV  v4.0.18 /home/user1/work/repo/my-react-router-app
+
+ ✓ app/utils/sum.ts (1 test) 1ms
+   ✓ add function adds two numbers 0ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  00:12:05
+   Duration  77ms (transform 6ms, setup 0ms, import 12ms, tests 1ms, environment 0ms)
+
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;ビルド結果の確認&lt;/h2&gt;
+&lt;p&gt;ビルドする前にアプリに組み込みます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;import { sum } from &quot;~/utils/sum&quot;;
+
+const App = () =&gt; {
+  const x = sum(1, 2);
+
+  return &amp;lt;div&gt;hello {x}&amp;lt;/div&gt;;
+};
+
+export default App;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;ビルド時にはテストコードは削除されている。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;// build/server/index.js の一部を抜粋
+const route0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  ErrorBoundary,
+  Layout,
+  default: root,
+  links
+}, Symbol.toStringTag, { value: &quot;Module&quot; }));
+const sum = (a, b) =&gt; {
+  return a + b;
+};
+const App2 = () =&gt; {
+  const x = sum(1, 2);
+  return /* @__PURE__ */ jsxs(&quot;div&quot;, {
+    children: [&quot;hello &quot;, x]
+  });
+};&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;余談&lt;/h2&gt;
+&lt;p&gt;Rust だとデフォルトでできるのでいいよね。&lt;/p&gt;
+&lt;h2&gt;参考&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://vitest.dev/guide/in-source.html&quot;&gt;https://vitest.dev/guide/in-source.html&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[React Router でファイルベースのルーティングに切り替える]]></title><description><![CDATA[React Router v7 File-based Routing React Router v7 のデフォルトテンプレート（ での手動定義）から、Remix v2 ライクなファイルベースルーティング（）へ切り替える方法について。 Remix v…]]></description><link>https://asakuchi.github.io/2026-02/react-router-routing/</link><guid isPermaLink="false">https://asakuchi.github.io/2026-02/react-router-routing/</guid><pubDate>Tue, 10 Feb 2026 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;React Router v7 File-based Routing&lt;/h1&gt;
+&lt;p&gt;React Router v7 のデフォルトテンプレート（&lt;code class=&quot;language-text&quot;&gt;routes.ts&lt;/code&gt; での手動定義）から、Remix v2 ライクなファイルベースルーティング（&lt;code class=&quot;language-text&quot;&gt;flatRoutes&lt;/code&gt;）へ切り替える方法について。&lt;/p&gt;
+&lt;p&gt;Remix v2 だとデフォルトでファイルベースだったんだけど・・・。&lt;/p&gt;
+&lt;h2&gt;パッケージのインストール&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; i @react-router/fs-routes&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;設定ファイルの変更&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;app/routes.ts&lt;/code&gt; を編集し、手動定義の配列から &lt;code class=&quot;language-text&quot;&gt;flatRoutes&lt;/code&gt; による自動走査へ切り替える。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;diff&quot;&gt;&lt;pre class=&quot;language-diff&quot;&gt;&lt;code class=&quot;language-diff&quot;&gt;// app/routes.ts
+&lt;span class=&quot;token deleted-sign deleted&quot;&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt; import { type RouteConfig, index } from &quot;@react-router/dev/routes&quot;;
+&lt;/span&gt;&lt;span class=&quot;token inserted-sign inserted&quot;&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt; import { type RouteConfig } from &quot;@react-router/dev/routes&quot;;
+&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt; import { flatRoutes } from &quot;@react-router/fs-routes&quot;;
+&lt;/span&gt;
+&lt;span class=&quot;token deleted-sign deleted&quot;&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt; export default [index(&quot;routes/home.tsx&quot;)] satisfies RouteConfig;
+&lt;/span&gt;&lt;span class=&quot;token inserted-sign inserted&quot;&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;export default flatRoutes() satisfies RouteConfig;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;これで &lt;code class=&quot;language-text&quot;&gt;app/routes&lt;/code&gt; 配下のファイルが自動的にルートとして認識されるようになる。&lt;/p&gt;
+&lt;h2&gt;トップページ&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;app/routes/_index.tsx&lt;/code&gt; が &lt;code class=&quot;language-text&quot;&gt;/&lt;/code&gt; を表す特別なファイルとなる。&lt;/p&gt;
+&lt;h1&gt;参考&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://reactrouter.com/how-to/file-route-conventions&quot;&gt;https://reactrouter.com/how-to/file-route-conventions&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Node.js で sleep を自分で実装しない]]></title><description><![CDATA[sleep は Node.js の標準関数でできる。 自分で実装しない。]]></description><link>https://asakuchi.github.io/javascript/sleep/</link><guid isPermaLink="false">https://asakuchi.github.io/javascript/sleep/</guid><pubDate>Thu, 29 Jan 2026 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;sleep は Node.js の標準関数でできる。&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; setTimeout &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;node:timers/promises&quot;&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1_000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;自分で実装しない。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[dc コマンド]]></title><description><![CDATA[dc コマンド desk calculator 電卓
@@ -53,9 +388,7 @@
 &lt;p&gt;&lt;a href=&quot;https://github.com/asakuchi/my-procon-library/blob/main/src/disjoint_set.rs&quot;&gt;https://github.com/asakuchi/my-procon-library/blob/main/src/disjoint_set.rs&lt;/a&gt;&lt;/p&gt;
 &lt;h1&gt;活用方法&lt;/h1&gt;
 &lt;p&gt;無向グラフの閉路の検知に使える。&lt;/p&gt;
-&lt;p&gt;ABC231D&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Docker でとりあえず Ubuntu のコンテナを作るメモ]]></title><description><![CDATA[とりあえず Ubuntu のコンテナを作る]]></description><link>https://asakuchi.github.io/docker/ubuntu-container/</link><guid isPermaLink="false">https://asakuchi.github.io/docker/ubuntu-container/</guid><pubDate>Sun, 19 Dec 2021 12:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;とりあえず Ubuntu のコンテナを作る&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;-dit&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--name&lt;/span&gt; my-ubuntu ubuntu
-&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-it&lt;/span&gt; my-ubuntu /bin/bash&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[wasm-pack test でエラー]]></title><description><![CDATA[WSL2 環境で  がエラーになる。 libnss3.so がないとのことなので入れてみる。 全然わからないが、ググったところ chromium が入ってないのかも？？ 出力を紛失してしまったが以下のようなメッセージが出る・・・。 Please install it with…]]></description><link>https://asakuchi.github.io/rust/wasm-test-error/</link><guid isPermaLink="false">https://asakuchi.github.io/rust/wasm-test-error/</guid><pubDate>Mon, 29 Nov 2021 14:00:00 GMT</pubDate><content:encoded>&lt;p&gt;WSL2 環境で &lt;code class=&quot;language-text&quot;&gt;wasm-pack test&lt;/code&gt; がエラーになる。&lt;/p&gt;
+&lt;p&gt;ABC231D&lt;/p&gt;</content:encoded></item><item><title><![CDATA[wasm-pack test でエラー]]></title><description><![CDATA[WSL2 環境で  がエラーになる。 libnss3.so がないとのことなので入れてみる。 全然わからないが、ググったところ chromium が入ってないのかも？？ 出力を紛失してしまったが以下のようなメッセージが出る・・・。 Please install it with…]]></description><link>https://asakuchi.github.io/rust/wasm-test-error/</link><guid isPermaLink="false">https://asakuchi.github.io/rust/wasm-test-error/</guid><pubDate>Mon, 29 Nov 2021 14:00:00 GMT</pubDate><content:encoded>&lt;p&gt;WSL2 環境で &lt;code class=&quot;language-text&quot;&gt;wasm-pack test&lt;/code&gt; がエラーになる。&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ wasm-pack &lt;span class=&quot;token builtin class-name&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--chrome&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--headless&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;INFO&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;: Checking &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; the Wasm target&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;.
     Finished dev &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;unoptimized + debuginfo&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; target&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;.01s
@@ -162,300 +495,7 @@ module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cla
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;  &lt;span class=&quot;token property&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;token property&quot;&gt;&quot;hello-wasm&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;file:../pkg&quot;&lt;/span&gt;
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://developer.mozilla.org/ja/docs/WebAssembly/Rust_to_wasm&quot;&gt;https://developer.mozilla.org/ja/docs/WebAssembly/Rust_to_wasm&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[MySQL チートシート]]></title><description><![CDATA[Docker でさくっとデータベースを用意する MYSQL_ROOT_PASSWORD は必須。 MySQL 接続 -u user_name -p[password] -P port_num -h host_name -D db_name host_name…]]></description><link>https://asakuchi.github.io/database/mysql/mysql-cheat-seat/</link><guid isPermaLink="false">https://asakuchi.github.io/database/mysql/mysql-cheat-seat/</guid><pubDate>Sat, 14 Aug 2021 06:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Docker でさくっとデータベースを用意する&lt;/h1&gt;
-&lt;p&gt;MYSQL_ROOT_PASSWORD は必須。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3306&lt;/span&gt;:3306 &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;token parameter variable&quot;&gt;--name&lt;/span&gt; mysql-container-name &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;token parameter variable&quot;&gt;-v&lt;/span&gt; mysql-volume-name:/var/lib/mysql &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;token parameter variable&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;MYSQL_ROOT_PASSWORD&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;password &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
-    mysql:8.0.26&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;MySQL 接続&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;mysql &lt;span class=&quot;token parameter variable&quot;&gt;-u&lt;/span&gt; root &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;-u user_name&lt;/li&gt;
-&lt;li&gt;-p[password]&lt;/li&gt;
-&lt;li&gt;-P port_num&lt;/li&gt;
-&lt;li&gt;-h host_name&lt;/li&gt;
-&lt;li&gt;-D db_name&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;host_name について&lt;/h2&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;-h localhost&lt;/code&gt;（もしくは&lt;code class=&quot;language-text&quot;&gt;-h&lt;/code&gt;なし）で接続するときは、あらかじめ &lt;code class=&quot;language-text&quot;&gt;~/.my.cnf&lt;/code&gt; に以下の設定が必要。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;[client]
-protocol=TCP&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;-h 127.0.0.1&lt;/code&gt; なら 👆 の設定は不要。&lt;/p&gt;
-&lt;h2&gt;password について&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;--password[=password], -p[password]&lt;/p&gt;
-&lt;p&gt;If given, there must be no space between --password= or -p and the password following it.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;パスワードを渡すときはスペースを開けずに渡す。
-なんでこんな仕様？？？？&lt;/p&gt;
-&lt;h1&gt;データベース一覧&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;mysql&quot;&gt;&lt;pre class=&quot;language-mysql&quot;&gt;&lt;code class=&quot;language-mysql&quot;&gt;mysql&amp;gt; show databases;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;データベース接続&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;mysql&quot;&gt;&lt;pre class=&quot;language-mysql&quot;&gt;&lt;code class=&quot;language-mysql&quot;&gt;mysql&amp;gt; use mysql&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;テーブル一覧&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;mysql&quot;&gt;&lt;pre class=&quot;language-mysql&quot;&gt;&lt;code class=&quot;language-mysql&quot;&gt;mysql&amp;gt; show tables;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;テーブル定義&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;mysql&quot;&gt;&lt;pre class=&quot;language-mysql&quot;&gt;&lt;code class=&quot;language-mysql&quot;&gt;mysql&amp;gt; desc func;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[PostgreSQL チートシート]]></title><description><![CDATA[Docker でさくっとデータベースを用意する POSTGRES_PASSWORD は必須。 PostgreSQL 接続 -h hostname -p port -U username -d dbname PostgreSQL…]]></description><link>https://asakuchi.github.io/database/postgresql/postgresql-cheat-seat/</link><guid isPermaLink="false">https://asakuchi.github.io/database/postgresql/postgresql-cheat-seat/</guid><pubDate>Sat, 14 Aug 2021 05:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Docker でさくっとデータベースを用意する&lt;/h1&gt;
-&lt;p&gt;POSTGRES_PASSWORD は必須。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5432&lt;/span&gt;:5432 &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;token parameter variable&quot;&gt;--name&lt;/span&gt; postgresql-container-name &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;token parameter variable&quot;&gt;-v&lt;/span&gt; postgresql-volume-name:/var/lib/postgresql/data &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
-    &lt;span class=&quot;token parameter variable&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;POSTGRES_PASSWORD&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;password &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
-    postgres:13.3-alpine&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;PostgreSQL 接続&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;psql &lt;span class=&quot;token parameter variable&quot;&gt;-h&lt;/span&gt; localhost &lt;span class=&quot;token parameter variable&quot;&gt;-U&lt;/span&gt; postgres &lt;span class=&quot;token parameter variable&quot;&gt;-d&lt;/span&gt; postgres&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;-h hostname&lt;/li&gt;
-&lt;li&gt;-p port&lt;/li&gt;
-&lt;li&gt;-U username&lt;/li&gt;
-&lt;li&gt;-d dbname&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;P&lt;/em&gt;ostgre&lt;em&gt;SQL&lt;/em&gt; で &lt;code class=&quot;language-text&quot;&gt;psql&lt;/code&gt; かな？&lt;/p&gt;
-&lt;p&gt;パスワードを渡すオプションはない。代わりに、&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;環境変数&lt;code class=&quot;language-text&quot;&gt;PGPASSWORD&lt;/code&gt;で渡す&lt;/li&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;.pgpass&lt;/code&gt;ファイルで渡す&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1&gt;データベース一覧&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;postgresql&quot;&gt;&lt;pre class=&quot;language-postgresql&quot;&gt;&lt;code class=&quot;language-postgresql&quot;&gt;postgres=# \l&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;データベース接続&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;postgresql&quot;&gt;&lt;pre class=&quot;language-postgresql&quot;&gt;&lt;code class=&quot;language-postgresql&quot;&gt;postgres=# \c dbname&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;テーブル一覧&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;postgresql&quot;&gt;&lt;pre class=&quot;language-postgresql&quot;&gt;&lt;code class=&quot;language-postgresql&quot;&gt;postgres=# \dt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;テーブル定義&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;postgresql&quot;&gt;&lt;pre class=&quot;language-postgresql&quot;&gt;&lt;code class=&quot;language-postgresql&quot;&gt;postgres=# \d my_table&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;テーブルだけじゃなく、&lt;code class=&quot;language-text&quot;&gt;view, materialized view, index, sequence, or foreign table&lt;/code&gt; についても確認可能&lt;/p&gt;</content:encoded></item><item><title><![CDATA[nodenv の使い方]]></title><description><![CDATA[〜〜 2026-01-30 追記 〜〜 mise を使う。 〜〜 追記ここまで 〜〜 前提 anyenv がインストール済み nodenv がインストール済み anyenv アップデート Node…]]></description><link>https://asakuchi.github.io/javascript/how-to-use-nodenv/</link><guid isPermaLink="false">https://asakuchi.github.io/javascript/how-to-use-nodenv/</guid><pubDate>Fri, 13 Aug 2021 15:00:00 GMT</pubDate><content:encoded>&lt;p&gt;〜〜 2026-01-30 追記 〜〜&lt;/p&gt;
-&lt;p&gt;mise を使う。&lt;/p&gt;
-&lt;p&gt;〜〜 追記ここまで 〜〜&lt;/p&gt;
-&lt;h1&gt;前提&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;anyenv がインストール済み&lt;/li&gt;
-&lt;li&gt;nodenv がインストール済み&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1&gt;anyenv アップデート&lt;/h1&gt;
-&lt;p&gt;Node バージョンの一覧が更新される。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ anyenv update&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;バージョン一覧&lt;/h1&gt;
-&lt;p&gt;インストール可能なバージョンの一覧。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ nodenv &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-l&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;インストール済みのバージョンの一覧。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ nodenv versions&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;特定のバージョンの Node のインストール&lt;/h1&gt;
-&lt;p&gt;install したら rehash する。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ nodenv &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;16.6&lt;/span&gt;.2
-$ nodenv rehash
-
-$ nodenv versions
-* &lt;span class=&quot;token number&quot;&gt;14.4&lt;/span&gt;.0 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;set by /home/user1/.anyenv/envs/nodenv/version&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;token number&quot;&gt;15.9&lt;/span&gt;.0
-  &lt;span class=&quot;token number&quot;&gt;16.6&lt;/span&gt;.2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;バージョンの切り替え&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ nodenv global &lt;span class=&quot;token number&quot;&gt;16.6&lt;/span&gt;.2
-
-$ nodenv versions
-  &lt;span class=&quot;token number&quot;&gt;14.4&lt;/span&gt;.0
-  &lt;span class=&quot;token number&quot;&gt;15.9&lt;/span&gt;.0
-* &lt;span class=&quot;token number&quot;&gt;16.6&lt;/span&gt;.2 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;set by /home/user1/.anyenv/envs/nodenv/version&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;プロジェクトごとに設定することもできる。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ nodenv local 16.6.2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;バージョン確認&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--version&lt;/span&gt;
-v16.6.2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Docker のメモ]]></title><description><![CDATA[DockerHub でイメージを探す 例えば、apache https://hub.docker.com/_/httpd Dockerfiile なしで 任意のディレクトリで以下のコマンドを実行する。 index.html…]]></description><link>https://asakuchi.github.io/docker/memo/</link><guid isPermaLink="false">https://asakuchi.github.io/docker/memo/</guid><pubDate>Sun, 18 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;DockerHub でイメージを探す&lt;/h1&gt;
-&lt;p&gt;例えば、apache&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://hub.docker.com/_/httpd&quot;&gt;https://hub.docker.com/_/httpd&lt;/a&gt;&lt;/p&gt;
-&lt;h1&gt;Dockerfiile なしで&lt;/h1&gt;
-&lt;p&gt;任意のディレクトリで以下のコマンドを実行する。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;-dit&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--name&lt;/span&gt; my-apache-app &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;8080&lt;/span&gt;:80 &lt;span class=&quot;token parameter variable&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token environment constant&quot;&gt;$PWD&lt;/span&gt;&quot;&lt;/span&gt;:/usr/local/apache2/htdocs/ httpd:2.4&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;index.html を作って&lt;code class=&quot;language-text&quot;&gt;http://localhost:8080/&lt;/code&gt; にアクセスするとそれが見れる。&lt;/p&gt;
-&lt;p&gt;コンテナ一覧&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; container &lt;span class=&quot;token function&quot;&gt;ls&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;-a&lt;/code&gt;オプションで稼働中でないものも表示&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; container &lt;span class=&quot;token function&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-a&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;コンテナ停止&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; container stop my-apache-app
-&lt;span class=&quot;token comment&quot;&gt;# or&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; container stop cc32354cdbd5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;コンテナ開始&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; container stop my-apache-app
-&lt;span class=&quot;token comment&quot;&gt;# or&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; container stop cc32354cdbd5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;コンテナ削除&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; container &lt;span class=&quot;token function&quot;&gt;rm&lt;/span&gt; my-apache-app
-&lt;span class=&quot;token comment&quot;&gt;# or&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; container &lt;span class=&quot;token function&quot;&gt;rm&lt;/span&gt; cc32354cdbd5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;1 回限りのコンテナ&lt;/h1&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;--rm&lt;/code&gt; をつけると実行後にコンテナが削除される。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token environment constant&quot;&gt;$PWD&lt;/span&gt;&quot;&lt;/span&gt;:/usr/src/myapp &lt;span class=&quot;token parameter variable&quot;&gt;-w&lt;/span&gt; /usr/src/myapp golang:1.16 go run hello.go&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;2 つのコンテナ&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;-dit&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--name&lt;/span&gt; web01 &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;8080&lt;/span&gt;:80 httpd:2.4
-$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;-dit&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--name&lt;/span&gt; web02 &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;8081&lt;/span&gt;:80 httpd:2.4
-
-$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;cp&lt;/span&gt; index02.html web02:/usr/local/apache2/htdocs
-$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;cp&lt;/span&gt; index02.html web02:/usr/local/apache2/htdocs/index.html&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;-dit&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--name&lt;/span&gt; web01 &lt;span class=&quot;token parameter variable&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token environment constant&quot;&gt;$PWD&lt;/span&gt;&quot;&lt;/span&gt;/web01data:/usr/local/apache2/htdocs &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;8080&lt;/span&gt;:80 httpd:2.4
-$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;-dit&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--name&lt;/span&gt; web02 &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;8081&lt;/span&gt;:80 httpd:2.4
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;マウント&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;バインドマウント
-&lt;ul&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;-v&lt;/code&gt; で指定する方法&lt;/li&gt;
-&lt;li&gt;ホストのディレクトリ&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;ボリュームマウント
-&lt;ul&gt;
-&lt;li&gt;Docker エンジン上の領域&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1&gt;ボリューム&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; volume create mysqlvolume&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;--name&lt;/span&gt; db01 &lt;span class=&quot;token parameter variable&quot;&gt;-dit&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-v&lt;/span&gt; mysqlvolume:/var/lib/mysql &lt;span class=&quot;token parameter variable&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;MYSQL_ROOT_PASSWORD&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;mypassword mysql:5.7&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;--name&lt;/span&gt; db01 &lt;span class=&quot;token parameter variable&quot;&gt;-dit&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--mount&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;volume,src&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;mysqlvolume,dst&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/var/lib/mysql &lt;span class=&quot;token parameter variable&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;MYSQL_ROOT_PASSWORD&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;mypassword mysql:5.7&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;-v&lt;/code&gt; よりも &lt;code class=&quot;language-text&quot;&gt;--mount&lt;/code&gt; の方がよい。&lt;/p&gt;
-&lt;h1&gt;バックアップ&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--mount&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;volume,src&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;mysqlvolume,dst&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/src &lt;span class=&quot;token parameter variable&quot;&gt;--mount&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;bind,src&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token environment constant&quot;&gt;$PWD&lt;/span&gt;&quot;&lt;/span&gt;,dst&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/dest busybox &lt;span class=&quot;token function&quot;&gt;tar&lt;/span&gt; czvf /dest/backup.tar.gz &lt;span class=&quot;token parameter variable&quot;&gt;-C&lt;/span&gt; /src &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt;
-&lt;span class=&quot;token comment&quot;&gt;# or&lt;/span&gt;
-$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;--rm&lt;/span&gt; --volumes-from db01 &lt;span class=&quot;token parameter variable&quot;&gt;--mount&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;bind,src&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token environment constant&quot;&gt;$PWD&lt;/span&gt;&quot;&lt;/span&gt;,dst&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/dest busybox &lt;span class=&quot;token function&quot;&gt;tar&lt;/span&gt; czvf /dest/backup.tar.gz &lt;span class=&quot;token parameter variable&quot;&gt;-C&lt;/span&gt; /var/lib/mysql &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;リストア&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--mount&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;volume,src&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;mysqlvolume,dst&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/dest &lt;span class=&quot;token parameter variable&quot;&gt;--mount&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;bind,src&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token environment constant&quot;&gt;$PWD&lt;/span&gt;&quot;&lt;/span&gt;,dst&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/src busybox &lt;span class=&quot;token function&quot;&gt;tar&lt;/span&gt; xvf /src/backup.tar.gz &lt;span class=&quot;token parameter variable&quot;&gt;-C&lt;/span&gt; /dest
-&lt;span class=&quot;token comment&quot;&gt;# or&lt;/span&gt;
-$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;--rm&lt;/span&gt; --volumes-from db01 &lt;span class=&quot;token parameter variable&quot;&gt;--mount&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;bind,src&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token environment constant&quot;&gt;$PWD&lt;/span&gt;&quot;&lt;/span&gt;,dst&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/src busybox &lt;span class=&quot;token function&quot;&gt;tar&lt;/span&gt; xvf /src/backup.tar.gz &lt;span class=&quot;token parameter variable&quot;&gt;-C&lt;/span&gt; /var/lib/mysql&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;ネットワーク&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; network create mydockernet&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;コンテナ作成時に追加&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;-dit&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--name&lt;/span&gt; web01 &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;8080&lt;/span&gt;:80 &lt;span class=&quot;token parameter variable&quot;&gt;--net&lt;/span&gt; mydockernet httpd:2.4
-$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run &lt;span class=&quot;token parameter variable&quot;&gt;-dit&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--name&lt;/span&gt; web02 &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;8081&lt;/span&gt;:80 &lt;span class=&quot;token parameter variable&quot;&gt;--net&lt;/span&gt; mydockernet httpd:2.4&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;既存コンテナを追加&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; network connect mydockernet web01
-$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; network connect mydockernet web02&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;!-- # WordPress
-
-```bash
-$ docker network create wordpressnet
-
-$ docker volume create wordpress_db_volume
-
-$ docker run --name wordpress-db -dit --mount type=volume,src=wordpress_db_volume,dst=/var/lib/mysql -e MYSQL_ROOT_PASSWORD=myrootpassword -e M
-YSQL_DATABASE=wordpressdb -e MYSQL_USER=wordpressuser -e MYSQL_PASSWORD=wordpresspass --net wordpressnet mysql:5.7
-b1a6ba6d2c96930a2c67db95a57d404860c9805560d75e0e224ac84eef55c111
-
-$ docker run --name wordpress-app -dit -p 8080:80 -e WORDPRESS_DB_HOST=wordpress-db -e WORDPRESS_DB_NAME=wordpressdb -e WORDPRESS_DB_USER=wordp
-ressuser -e WORDPRESS_DB_PASSWORD=wordpresspass --net wordpressnet wordpress
-``` --&gt;
-&lt;h1&gt;docker-compose&lt;/h1&gt;
-&lt;p&gt;docker-compose.yml&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yml&quot;&gt;&lt;pre class=&quot;language-yml&quot;&gt;&lt;code class=&quot;language-yml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;3&quot;&lt;/span&gt;
-
-&lt;span class=&quot;token key atrule&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;token key atrule&quot;&gt;wordpress-db&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;token key atrule&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; mysql&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5.7&lt;/span&gt;
-    &lt;span class=&quot;token key atrule&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; wordpress_db_volume&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;/var/lib/mysql
-    &lt;span class=&quot;token key atrule&quot;&gt;restart&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; always
-    &lt;span class=&quot;token key atrule&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;token key atrule&quot;&gt;MYSQL_ROOT_PASSWORD&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; myrootpassword
-      &lt;span class=&quot;token key atrule&quot;&gt;MYSQL_DATABASE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; wordpressdb
-      &lt;span class=&quot;token key atrule&quot;&gt;MYSQL_USER&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; wordpressuser
-      &lt;span class=&quot;token key atrule&quot;&gt;MYSQL_PASSWORD&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; wordpresspass
-
-  &lt;span class=&quot;token key atrule&quot;&gt;wordpress-app&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;token key atrule&quot;&gt;depends_on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; wordpress&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;db
-    &lt;span class=&quot;token key atrule&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; wordpress
-    &lt;span class=&quot;token key atrule&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; 8080&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;80&lt;/span&gt;
-    &lt;span class=&quot;token key atrule&quot;&gt;restart&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; always
-    &lt;span class=&quot;token key atrule&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;token key atrule&quot;&gt;WORDPRESS_DB_HOST&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; wordpress&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;db
-      &lt;span class=&quot;token key atrule&quot;&gt;WORDPRESS_DB_NAME&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; wordpressdb
-      &lt;span class=&quot;token key atrule&quot;&gt;WORDPRESS_DB_USER&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; wordpressuser
-      &lt;span class=&quot;token key atrule&quot;&gt;WORDPRESS_DB_PASSWORD&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; wordpresspass
-
-&lt;span class=&quot;token key atrule&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
-  wordpress_db_volume&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker-compose&lt;/span&gt; up &lt;span class=&quot;token parameter variable&quot;&gt;-d&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker-compose&lt;/span&gt; down&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;コンテナから image 作成&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; commit webcontent mycustomed_httpd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;Dockerfile から image 作成&lt;/h1&gt;
-&lt;p&gt;Dockerfile&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;dockerfile&quot;&gt;&lt;pre class=&quot;language-dockerfile&quot;&gt;&lt;code class=&quot;language-dockerfile&quot;&gt;&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;FROM&lt;/span&gt; httpd&lt;/span&gt;
-&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; index.html /usr/local/apache2/htdocs/&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; build &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-t&lt;/span&gt; myimage01&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;DockerHub に登録&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;DockerHub にリポジトリを作る&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; build &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-t&lt;/span&gt; myexample
-$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; tag myexample paleapricot/myexample
-$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; login
-$ &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; push paleapricot/myexample&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;Amazon ECR に登録&lt;/h1&gt;
-&lt;p&gt;Amazon Elastic Container Registry&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;ECR にリポジトリを作る&lt;/li&gt;
-&lt;li&gt;push コマンド等は ECR で確認できるのでそれを実行する
-&lt;ul&gt;
-&lt;li&gt;ログイン&lt;/li&gt;
-&lt;li&gt;イメージ構築&lt;/li&gt;
-&lt;li&gt;タグ付け&lt;/li&gt;
-&lt;li&gt;push&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1&gt;Kubernetes&lt;/h1&gt;
-&lt;p&gt;起動&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ minikube start vm-driver&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;docker&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;認証情報作成&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ kubectl create secret docker-registry mysecret --docker-server&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;server --docker-username&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;username --docker-password&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;pass&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;オブジェクトの作成&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# マニフェストファイルを指定する&lt;/span&gt;
-$ kubectl create &lt;span class=&quot;token parameter variable&quot;&gt;-f&lt;/span&gt; deploy.yml
-$ kubectl create &lt;span class=&quot;token parameter variable&quot;&gt;-f&lt;/span&gt; service.yml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;オブジェクトの確認&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ kubectl get pod
-$ kubectl get deployments
-$ kubectl get services&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ minikube &lt;span class=&quot;token function&quot;&gt;service&lt;/span&gt; my-service&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;変更を適用&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ kubectl apply &lt;span class=&quot;token parameter variable&quot;&gt;-f&lt;/span&gt; deploy.yml &lt;span class=&quot;token parameter variable&quot;&gt;--record&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;true&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;削除&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ kubectl delete &lt;span class=&quot;token parameter variable&quot;&gt;-f&lt;/span&gt; deploy.yml
-$ kubectl delete &lt;span class=&quot;token parameter variable&quot;&gt;-f&lt;/span&gt; service.yml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Rust VSCode 拡張機能のインストールでエラー]]></title><description><![CDATA[VSCode 拡張機能 に必要なコンポーネントがインストールできない 新しい環境に拡張機能を入れたら右下にポップアップで「必要なコンポーネントインストールする？」みたいなのが出てきたので、言われるがままにインストールするとエラー発生。 解決策 https://github.com…]]></description><link>https://asakuchi.github.io/rust/rust-vscode/</link><guid isPermaLink="false">https://asakuchi.github.io/rust/rust-vscode/</guid><pubDate>Sun, 18 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;VSCode 拡張機能 に必要なコンポーネントがインストールできない&lt;/h1&gt;
-&lt;p&gt;新しい環境に拡張機能を入れたら右下にポップアップで「必要なコンポーネントインストールする？」みたいなのが出てきたので、言われるがままにインストールするとエラー発生。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; Executing task: rustup component &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; rust-src &lt;span class=&quot;token parameter variable&quot;&gt;--toolchain&lt;/span&gt; stable-x86_64-pc-windows-msvc &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;
-
-info: downloading component &lt;span class=&quot;token string&quot;&gt;&apos;rust-src&apos;&lt;/span&gt;
-info: installing component &lt;span class=&quot;token string&quot;&gt;&apos;rust-src&apos;&lt;/span&gt;
-info: rolling back changes
-error: failed to &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; component: &lt;span class=&quot;token string&quot;&gt;&apos;rust-src&apos;&lt;/span&gt;, detected conflict: &lt;span class=&quot;token string&quot;&gt;&apos;lib/rustlib/src/rust/Cargo.lock&apos;&lt;/span&gt;
-ターミナル プロセス &lt;span class=&quot;token string&quot;&gt;&quot;C:\Program Files\Git&lt;span class=&quot;token entity&quot; title=&quot;\b&quot;&gt;\b&lt;/span&gt;in&lt;span class=&quot;token entity&quot; title=&quot;\b&quot;&gt;\b&lt;/span&gt;ash.exe &apos;-c&apos;, &apos;rustup component add rust-src --toolchain stable-x86_64-pc-windows-msvc&apos;&quot;&lt;/span&gt; が終了コード &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; で終了しました。
-
-ターミナルはタスクで再利用されます、閉じるには任意のキーを押してください。&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;解決策&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/rust-lang/rls/issues/1587&quot;&gt;https://github.com/rust-lang/rls/issues/1587&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;「toolchain を reinstalling してね」
-どうやって？？&lt;/p&gt;
-&lt;h1&gt;toolcahin を reinstalling&lt;/h1&gt;
-&lt;p&gt;rustup の help 見ながら・・・。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ rustup toolchain list
-stable-x86_64-pc-windows-msvc &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;default&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-
-$ rustup toolchain uninstall stable-x86_64-pc-windows-msvc
-info: uninstalling toolchain &lt;span class=&quot;token string&quot;&gt;&apos;stable-x86_64-pc-windows-msvc&apos;&lt;/span&gt;
-info: toolchain &lt;span class=&quot;token string&quot;&gt;&apos;stable-x86_64-pc-windows-msvc&apos;&lt;/span&gt; uninstalled
-
-$ rustup toolchain list
-no installed toolchains
-
-$ rustup toolchain &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; stable-x86_64-pc-windows-msvc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;VSCode 再起動して再度出てきたポップアップのボタンを押したらインストール問題なかったのでヨシ！&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Rust filterの中の&&について]]></title><description><![CDATA[これ何 rustlings の iterators5.rs を解いているときの疑問。 これて test 通ったのだが、  （二重のアンパサンド）は何か正しくないような・・・。
+&lt;p&gt;参考：&lt;a href=&quot;https://developer.mozilla.org/ja/docs/WebAssembly/Rust_to_wasm&quot;&gt;https://developer.mozilla.org/ja/docs/WebAssembly/Rust_to_wasm&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Rust filterの中の&&について]]></title><description><![CDATA[これ何 rustlings の iterators5.rs を解いているときの疑問。 これて test 通ったのだが、  （二重のアンパサンド）は何か正しくないような・・・。
 もしくは（二重のアスタリスク）？ trait.Iterator.html#method.filter…]]></description><link>https://asakuchi.github.io/rust/double-ampersand-in-iterator/</link><guid isPermaLink="false">https://asakuchi.github.io/rust/double-ampersand-in-iterator/</guid><pubDate>Thu, 15 Jul 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;これ何&lt;/h1&gt;
 &lt;p&gt;rustlings の iterators5.rs を解いているときの疑問。&lt;/p&gt;
 &lt;p&gt;これて test 通ったのだが、 &lt;code class=&quot;language-text&quot;&gt;&amp;amp;&amp;amp;&lt;/code&gt; （二重のアンパサンド）は何か正しくないような・・・。
@@ -558,35 +598,7 @@ String と str はどう組み合わせてもOK。&lt;/p&gt;
 &lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;hello&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot; world&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;token string&quot;&gt;&quot;hello world&quot;&lt;/span&gt;
 &lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;hello&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;to_string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot; world&quot;&lt;/span&gt;
-&lt;span class=&quot;token string&quot;&gt;&quot;hello world&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[aws チュートリアル]]></title><description><![CDATA[aws チュートリアル https://aws.amazon.com/jp/getting-started/#Launch_Your_First_Application モジュール 1: ウェブアプリケーションを作成する このモジュールでは、AWS Amplify…]]></description><link>https://asakuchi.github.io/aws-tutorial/</link><guid isPermaLink="false">https://asakuchi.github.io/aws-tutorial/</guid><pubDate>Wed, 30 Jun 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;aws チュートリアル&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://aws.amazon.com/jp/getting-started/#Launch_Your_First_Application&quot;&gt;https://aws.amazon.com/jp/getting-started/#Launch_Your_First_Application&lt;/a&gt;&lt;/p&gt;
-&lt;h1&gt;モジュール 1: ウェブアプリケーションを作成する&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;このモジュールでは、AWS Amplify コンソールを使用して、ウェブアプリケーションの静的リソースをデプロイします。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;HTMLをデプロイした。
-ここではzipファイルをドラッグアンドドロップしたけど、GitHubの連携ができそう。&lt;/p&gt;
-&lt;p&gt;Amplify コンソール
-&lt;a href=&quot;https://us-west-2.console.aws.amazon.com/amplify/home&quot;&gt;https://us-west-2.console.aws.amazon.com/amplify/home&lt;/a&gt;&lt;/p&gt;
-&lt;h1&gt;モジュール 2: サーバーレス関数を構築する&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;このモジュールでは、AWS Lambda を使用してサーバーレス関数を構築します。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Node.js で関数作った&lt;/p&gt;
-&lt;p&gt;米国西部（オレゴン）us-west-2&lt;/p&gt;
-&lt;h1&gt;モジュール 3: サーバーレス関数をウェブアプリケーションにリンクする&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;このモジュールでは、API Gateway を使用してサーバーレス関数をデプロイします。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;ちょっとよくわからない。&lt;/p&gt;
-&lt;h1&gt;モジュール 4: データテーブルを作成する&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;このモジュールでは、DynamoDB テーブルを作成し、Lambda 関数がデータを格納できるようにします。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1&gt;モジュール 5: ウェブアプリケーションに対話性を追加する&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;このモジュールでは、 API を呼び出し、カスタム入力テキストを表示できるように静的ウェブサイトを変更します。&lt;/p&gt;
-&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[React メモ]]></title><description><![CDATA[プロジェクトを作るときの共通設定 プロジェクト作成 TypeScript 最新化 Lint 導入 package インストール ファイルコピー .eslintignore .eslintrc.js .prettierignore .prettierrc.js…]]></description><link>https://asakuchi.github.io/react-starter-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/react-starter-memo/</guid><pubDate>Tue, 02 Mar 2021 04:00:00 GMT</pubDate><content:encoded>&lt;p&gt;プロジェクトを作るときの共通設定&lt;/p&gt;
+&lt;span class=&quot;token string&quot;&gt;&quot;hello world&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[React メモ]]></title><description><![CDATA[プロジェクトを作るときの共通設定 プロジェクト作成 TypeScript 最新化 Lint 導入 package インストール ファイルコピー .eslintignore .eslintrc.js .prettierignore .prettierrc.js…]]></description><link>https://asakuchi.github.io/react-starter-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/react-starter-memo/</guid><pubDate>Tue, 02 Mar 2021 04:00:00 GMT</pubDate><content:encoded>&lt;p&gt;プロジェクトを作るときの共通設定&lt;/p&gt;
 &lt;h1&gt;プロジェクト作成&lt;/h1&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npx create-react-app [app-name] --template typescript&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h1&gt;TypeScript 最新化&lt;/h1&gt;
@@ -684,73 +696,7 @@ No&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h1&gt;React Helmet&lt;/h1&gt;
 &lt;p&gt;title を書き換えるなら
 （ルーティングするならいる）&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add react-helmet&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Lint メモ]]></title><description><![CDATA[ESLint インストールされているバージョン確認 package のアップグレード アップグレードしたい package を矢印キーで選んでスペースで選択し、Enter で決定。 ESLint 設定ファイル Prettier インストール .eslintrc.js…]]></description><link>https://asakuchi.github.io/lint-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/lint-memo/</guid><pubDate>Wed, 24 Feb 2021 22:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;ESLint&lt;/h1&gt;
-&lt;p&gt;インストールされているバージョン確認&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ npm ls eslint&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;package のアップグレード&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ yarn upgrade-interactive --latest&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;アップグレードしたい package を矢印キーで選んでスペースで選択し、Enter で決定。&lt;/p&gt;
-&lt;h1&gt;ESLint 設定ファイル&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn eslint --init
-
-✔ How would you like to use ESLint? · style
-✔ What type of modules does your project use? · esm
-✔ Which framework does your project use? · react
-✔ Does your project use TypeScript? · No / Yes
-✔ Where does your code run? · browser
-✔ How would you like to define a style for your project? · guide
-✔ Which style guide do you want to follow? · airbnb
-✔ What format do you want your config file to be in? · JavaScript
-Checking peerDependencies of eslint-config-airbnb@latest
-Local ESLint installation not found.
-The config that you&apos;ve selected requires the following dependencies:
-
-eslint-plugin-react@^7.21.5 @typescript-eslint/eslint-plugin@latest eslint-config-airbnb@latest eslint@^5.16.0 || ^6.8.0 || ^7.2.0 eslint-plugin-import@^2.22.1 eslint-plugin-jsx-a11y@^6.4.1 eslint-plugin-react-hooks@^4 || ^3 || ^2.3.0 || ^1.7.0 @typescript-eslint/parser@latest
-✔ Would you like to install them now with npm? · No / Yes&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ yarn add -D eslint-plugin-react @typescript-eslint/eslint-plugin \
- eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y \
- eslint-plugin-react-hooks @typescript-eslint/parser
-$ typesync
-$ yarn&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;Prettier&lt;/h1&gt;
-&lt;p&gt;インストール&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add -D prettier eslint-config-prettier
-typesync
-yarn&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;.eslintrc.js の追記&lt;/p&gt;
-&lt;p&gt;extends に &apos;prettier&apos; を追加&lt;/p&gt;
-&lt;p&gt;eslint-config-prettier の 8.0.0 からこれだけでよくなった。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/prettier/eslint-config-prettier/blob/main/CHANGELOG.md#version-800-2021-02-21&quot;&gt;https://github.com/prettier/eslint-config-prettier/blob/main/CHANGELOG.md#version-800-2021-02-21&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;ESLintのルールとPrettierのルールの競合の確認&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npx eslint-config-prettier &apos;src/**/*.{js,jsx,ts,tsx}&apos;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;stylelint&lt;/h1&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ yarn add -D stylelint stylelint-config-standard stylelint-order stylelint-config-recess-order&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[nodenv default-packages]]></title><description><![CDATA[default-packages とは ここにパッケージ名を記載しておくと、したときに自動的にグローバルインストールしてくれる。  上記ファイルでタイプミスすると  でエラーが起きるので注意。]]></description><link>https://asakuchi.github.io/nodenv-default-packages/</link><guid isPermaLink="false">https://asakuchi.github.io/nodenv-default-packages/</guid><pubDate>Sun, 21 Feb 2021 10:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;default-packages とは&lt;/h1&gt;
-&lt;p&gt;ここにパッケージ名を記載しておくと、&lt;code class=&quot;language-text&quot;&gt;nodenv install&lt;/code&gt;したときに自動的にグローバルインストールしてくれる。&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;$(nodenv root)/default-packages&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn
-typescript
-ts-node
-typesync&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;上記ファイルでタイプミスすると &lt;code class=&quot;language-text&quot;&gt;nodenv install&lt;/code&gt; でエラーが起きるので注意。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;user1@apricot:~$ nodenv install 14.4.0
-nodenv: /home/user1/.anyenv/envs/nodenv/versions/14.4.0 already exists
-continue with installation? (y/N) y
-Downloading node-v14.4.0-linux-x64.tar.gz...
--&gt; https://nodejs.org/dist/v14.4.0/node-v14.4.0-linux-x64.tar.gz
-Installing node-v14.4.0-linux-x64...
-Installed node-v14.4.0-linux-x64 to /home/user1/.anyenv/envs/nodenv/versions/14.4.0
-
-npm ERR! code E404
-npm ERR! 404 Not Found - GET https://registry.npmjs.org/typesyn - Not found
-npm ERR! 404
-npm ERR! 404  &apos;typesyn@latest&apos; is not in the npm registry.
-npm ERR! 404 You should bug the author to publish it (or use the name yourself!)
-npm ERR! 404
-npm ERR! 404 Note that you can also install from a
-npm ERR! 404 tarball, folder, http url, or git url.
-
-npm ERR! A complete log of this run can be found in:
-npm ERR!     /home/user1/.npm/_logs/2021-02-21T13_47_44_661Z-debug.log&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[WSL2]]></title><description><![CDATA[インストール Windows でフロントエンドの開発環境を作る手順 https://github.com/oukayuka/Riakuto-StartingReact-ja3.1/blob/master/extra/build-win-env.md WSL2の初歩メモ https…]]></description><link>https://asakuchi.github.io/wsl-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/wsl-memo/</guid><pubDate>Sun, 21 Feb 2021 09:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;インストール&lt;/h1&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add react-helmet&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[WSL2]]></title><description><![CDATA[インストール Windows でフロントエンドの開発環境を作る手順 https://github.com/oukayuka/Riakuto-StartingReact-ja3.1/blob/master/extra/build-win-env.md WSL2の初歩メモ https…]]></description><link>https://asakuchi.github.io/wsl-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/wsl-memo/</guid><pubDate>Sun, 21 Feb 2021 09:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;インストール&lt;/h1&gt;
 &lt;p&gt;Windows でフロントエンドの開発環境を作る手順&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/oukayuka/Riakuto-StartingReact-ja3.1/blob/master/extra/build-win-env.md&quot;&gt;https://github.com/oukayuka/Riakuto-StartingReact-ja3.1/blob/master/extra/build-win-env.md&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;WSL2の初歩メモ&lt;/p&gt;
@@ -782,211 +728,7 @@ IP指定ならできる。&lt;/p&gt;
 &lt;h1&gt;たまにつながらない&lt;/h1&gt;
 &lt;p&gt;Windows を再起動すると localhost でアクセスできなくなっていることがある。
 原因はわからないが・・・WSL2を再起動するとつながるようになる。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;wsl.exe --shutdown&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Google App Engine ことはじめ]]></title><description><![CDATA[チュートリアルについて Google Cloud Platform にアクセスして、
-ナビゲーションメニューから App Engine をクリック
-↓これは僕のプロジェクトだけど、 https://console.cloud.google.com/home?authuser=…]]></description><link>https://asakuchi.github.io/quick-start-google-app-engine/</link><guid isPermaLink="false">https://asakuchi.github.io/quick-start-google-app-engine/</guid><pubDate>Wed, 03 Feb 2021 09:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;チュートリアルについて&lt;/h1&gt;
-&lt;p&gt;Google Cloud Platform にアクセスして、
-ナビゲーションメニューから App Engine をクリック
-↓これは僕のプロジェクトだけど、&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://console.cloud.google.com/home?authuser=1&amp;#x26;project=asakuchi-sandbox&quot;&gt;https://console.cloud.google.com/home?authuser=1&amp;#x26;project=asakuchi-sandbox&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;するとチュートリアルを始めることができる。&lt;/p&gt;
-&lt;h1&gt;手順&lt;/h1&gt;
-&lt;p&gt;プログラムを用意する&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;git clone [repository-url]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;アプリのテスト&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;php -S localhost:8080&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;デプロイ&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gcloud app deploy&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;デプロイするところで以下のエラーが発生。
-『請求先アカウントのリンクを有効化』というのをしなければいけないらしい。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;ERROR: (gcloud.app.deploy) Error Response: [7] Access Not Configured. Cloud Build has not been used in project asakuchi-sandbox before or it is disabled. Enable it by visiting https://console.developers.go
-ogle.com/apis/api/cloudbuild.googleapis.com/overview?project=asakuchi-sandbox then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://qiita.com/_kyamasan/items/2d76a487c39835e06442&quot;&gt;https://qiita.com/_kyamasan/items/2d76a487c39835e06442&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;それをしようとおもったのだけど、無料トライアルも始まってしまうのかな？
-よくわからないけど、無料トライアル開始。&lt;/p&gt;
-&lt;h1&gt;デプロイ完了&lt;/h1&gt;
-&lt;p&gt;とっても簡単&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://asakuchi-sandbox.appspot.com/?hl=ja&quot;&gt;http://asakuchi-sandbox.appspot.com/?hl=ja&lt;/a&gt;&lt;/p&gt;
-&lt;h1&gt;アプリケーションの無効化&lt;/h1&gt;
-&lt;p&gt;設定 -&gt; アプリケーションを無効にする&lt;/p&gt;
-&lt;p&gt;課金を停止したかったらこれ&lt;/p&gt;
-&lt;h1&gt;Google Cloud SDK&lt;/h1&gt;
-&lt;p&gt;ローカルで操作したかったらこれ？&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://cloud.google.com/sdk/docs/install#interactive?hl=ja&quot;&gt;https://cloud.google.com/sdk/docs/install#interactive?hl=ja&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[webpack チュートリアルをやった その1]]></title><description><![CDATA[のチュートリアルやります。 https://webpack.js.org/guides/getting-started/ Getting Started  のインストール  に build…]]></description><link>https://asakuchi.github.io/javascript/webpack/webpack-tutorial_01/</link><guid isPermaLink="false">https://asakuchi.github.io/javascript/webpack/webpack-tutorial_01/</guid><pubDate>Sun, 06 Dec 2020 10:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;webpack&lt;/code&gt; のチュートリアルやります。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://webpack.js.org/guides/getting-started/&quot;&gt;https://webpack.js.org/guides/getting-started/&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;Getting Started&lt;/h2&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;webpack&lt;/code&gt; のインストール&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; webpack webpack-cli --save-dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;npm-scripts&lt;/code&gt; に build を追加しよう。&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; からはローカルインストールしたパッケージが参照できるので、&lt;code class=&quot;language-text&quot;&gt;npx webpack&lt;/code&gt; ではなく &lt;code class=&quot;language-text&quot;&gt;webpack&lt;/code&gt; で OK。&lt;/p&gt;
-&lt;div class=&quot;gatsby-code-title&quot;&gt;package.json&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;token property&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token property&quot;&gt;&quot;build&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;webpack&quot;&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;プロジェクトをこうしよう。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  webpack-demo
-  |- package.json
-  |- webpack.config.js
-  |- /dist
-    |- index.html
-  |- /src
-    |- index.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;webpack.config.js&lt;/code&gt; は &lt;code class=&quot;language-text&quot;&gt;webpack&lt;/code&gt; の設定ファイル。
-以下がデフォルト？&lt;/p&gt;
-&lt;div class=&quot;gatsby-code-title&quot;&gt;webpack.config.js&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; path &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-
-module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;token literal-property property&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./src/index.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token literal-property property&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;main.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; path&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__dirname&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;dist&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;npm run build&lt;/code&gt; すると dist ディレクトリの JavaScript ファイルにバンドルされるよ。&lt;/p&gt;
-&lt;h2&gt;Asset Management&lt;/h2&gt;
-&lt;p&gt;CSS、画像、フォント、データ（csv、xml、JSON、etc.） もバンドルできるよ。&lt;/p&gt;
-&lt;p&gt;CSS については以下の通り。他のも似たような感じ。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; --save-dev style-loader css-loader&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-code-title&quot;&gt;webpack.config.js&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; path &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-
-module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;token literal-property property&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./src/index.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token literal-property property&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;bundle.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; path&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__dirname&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;dist&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token literal-property property&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;rules&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
-      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;token literal-property property&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token regex&quot;&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token regex-source language-regex&quot;&gt;\.css$&lt;/span&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token regex-flags&quot;&gt;i&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;token literal-property property&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;style-loader&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;css-loader&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  webpack-demo
-  |- package.json
-  |- webpack.config.js
-  |- /dist
-    |- index.html
-  |- /src
-    |- style.css
-    |- index.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;npm run build&lt;/code&gt; すると CSS ファイルが JavaScript ファイルにバンドルされるよ。
-バンドルされた JavaScript ファイルを実行すると HTML に style タグが追加される。&lt;/p&gt;
-&lt;h2&gt;Output Management&lt;/h2&gt;
-&lt;p&gt;出力は複数にできたら嬉しいよね、という内容だけど、その恩恵は今のところまだわからないかも。&lt;/p&gt;
-&lt;div class=&quot;gatsby-code-title&quot;&gt;webpack.config.js&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; path &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-
-module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;token literal-property property&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./src/index.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./src/print.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token literal-property property&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;[name].bundle.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; path&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__dirname&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;dist&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;HtmlWebpackPlugin&lt;/p&gt;
-&lt;p&gt;HTML も出力されるプラグイン。こっちは嬉しいかも。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; --save-dev html-webpack-plugin&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-code-title&quot;&gt;webpack.config.js&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; path &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; HtmlWebpackPlugin &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;html-webpack-plugin&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-
-module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;token literal-property property&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./src/index.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./src/print.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token literal-property property&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;HtmlWebpackPlugin&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;token literal-property property&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Output Management&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token literal-property property&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;[name].bundle.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; path&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__dirname&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;dist&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;dist フォルダのクリーンナップ&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ npm install --save-dev clean-webpack-plugin&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-code-title&quot;&gt;webpack.config.js&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; path &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; HtmlWebpackPlugin &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;html-webpack-plugin&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; CleanWebpackPlugin &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;clean-webpack-plugin&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-
-module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;token literal-property property&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./src/index.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./src/print.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token literal-property property&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;CleanWebpackPlugin&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;HtmlWebpackPlugin&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;token literal-property property&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Output Management&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token literal-property property&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;[name].bundle.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; path&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__dirname&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;dist&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;Development&lt;/h2&gt;
-&lt;p&gt;mode を develop にしてみましょう。&lt;/p&gt;
-&lt;p&gt;ここのページだと解説がまるでないけど、こっちのページに何が起こるのか載っている。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://webpack.js.org/configuration/mode/#mode-development&quot;&gt;https://webpack.js.org/configuration/mode/#mode-development&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-code-title&quot;&gt;webpack.config.js&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  ～～～
-  &lt;span class=&quot;token literal-property property&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;development&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  ～～～
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;ソースマップ&lt;/p&gt;
-&lt;p&gt;エラーが起きた時にバンドル前のファイル名の行数がわかるようになる。&lt;/p&gt;
-&lt;div class=&quot;gatsby-code-title&quot;&gt;webpack.config.js&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  ～～～
-  &lt;span class=&quot;token literal-property property&quot;&gt;devtool&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;inline-source-map&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  ～～～
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Development Tool&lt;/p&gt;
-&lt;p&gt;3 つあるけど、大抵の場合は &lt;code class=&quot;language-text&quot;&gt;webpack-dev-server&lt;/code&gt;で OK、とのこと。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; --save-dev webpack-dev-server&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;dev server にバンドルされたファイルの場所を教えます。&lt;/p&gt;
-&lt;div class=&quot;gatsby-code-title&quot;&gt;webpack.config.js&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  ～～～
-  &lt;span class=&quot;token literal-property property&quot;&gt;devServer&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token literal-property property&quot;&gt;contentBase&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;./dist&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  ～～～
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;dev server を簡単に動かせるようにスクリプトを書きます。&lt;/p&gt;
-&lt;div class=&quot;gatsby-code-title&quot;&gt;package.json&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;token property&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token property&quot;&gt;&quot;start&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;webpack serve --open&quot;&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;と、書いてあるももの、オプションの指定間違ってるっぽい？？&lt;/p&gt;
-&lt;p&gt;↓ にしておきます。&lt;/p&gt;
-&lt;div class=&quot;gatsby-code-title&quot;&gt;package.json&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;token property&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token property&quot;&gt;&quot;start&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;webpack serve&quot;&lt;/span&gt;
-  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;npm run start&lt;/code&gt;すると dev server が起動します。
-localhost:8080 にアクセスするとバンドル後のファイルにアクセスできます。
-ファイルの変更を検知したら再 build とブラウザのリロードを自動でやってくれます。便利。&lt;/p&gt;
-&lt;p&gt;続く&lt;/p&gt;</content:encoded></item><item><title><![CDATA[【Gatsby】 GraphQL の edges.node.data と nodes.data の違いって何？]]></title><description><![CDATA[GraphQL の edges.node.data と nodes.data の違いって何？
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;wsl.exe --shutdown&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[【Gatsby】 GraphQL の edges.node.data と nodes.data の違いって何？]]></title><description><![CDATA[GraphQL の edges.node.data と nodes.data の違いって何？
 例えばこういうの https://www.gatsbyjs.com/tutorial/part-seven/ stackoverflowに答えがありました。 https…]]></description><link>https://asakuchi.github.io/javascript/gatsby/gatsby_edges-node-date_vs_node-data/</link><guid isPermaLink="false">https://asakuchi.github.io/javascript/gatsby/gatsby_edges-node-date_vs_node-data/</guid><pubDate>Sat, 05 Dec 2020 10:00:00 GMT</pubDate><content:encoded>&lt;p&gt;GraphQL の edges.node.data と nodes.data の違いって何？
 例えばこういうの&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.gatsbyjs.com/tutorial/part-seven/&quot;&gt;https://www.gatsbyjs.com/tutorial/part-seven/&lt;/a&gt;&lt;/p&gt;
@@ -1137,23 +879,4 @@ To create a production build, use gatsby build
 ⠀
 success Building development bundle - &lt;span class=&quot;token number&quot;&gt;9&lt;/span&gt;.997s&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;参考
-&lt;a href=&quot;https://github.com/doczjs/docz/issues/577&quot;&gt;https://github.com/doczjs/docz/issues/577&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[npm コマンドメモ]]></title><description><![CDATA[★初期化（package.jsonができる） ★package.json の内容に従ってインストール ★パッケージ追加 （--saveいらない） ★パッケージ追加（開発用） ★パッケージ追加（グローバル）]]></description><link>https://asakuchi.github.io/npm-command-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/npm-command-memo/</guid><pubDate>Mon, 30 Nov 2020 14:01:00 GMT</pubDate><content:encoded>&lt;p&gt;★初期化（package.jsonができる）&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;★package.json の内容に従ってインストール&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;★パッケージ追加&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm install パッケージ名&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;（--saveいらない）&lt;/p&gt;
-&lt;p&gt;★パッケージ追加（開発用）&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm install --save-dev パッケージ名&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;★パッケージ追加（グローバル）&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;npm install --global  パッケージ名&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[yarn コマンドメモ]]></title><description><![CDATA[★初期化（package.jsonができる） ★package.json の内容に従ってインストール ★パッケージ追加 ★パッケージ追加（開発用） ★パッケージ追加（グローバル）]]></description><link>https://asakuchi.github.io/yarn-command-memo/</link><guid isPermaLink="false">https://asakuchi.github.io/yarn-command-memo/</guid><pubDate>Mon, 30 Nov 2020 14:01:00 GMT</pubDate><content:encoded>&lt;p&gt;★初期化（package.jsonができる）&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;★package.json の内容に従ってインストール&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;★パッケージ追加&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add パッケージ名&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;★パッケージ追加（開発用）&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn add --dev パッケージ名&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;★パッケージ追加（グローバル）&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;yarn global install パッケージ名&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item></channel></rss>
+&lt;a href=&quot;https://github.com/doczjs/docz/issues/577&quot;&gt;https://github.com/doczjs/docz/issues/577&lt;/a&gt;&lt;/p&gt;</content:encoded></item></channel></rss>
