@@ -2,10 +2,16 @@
   "name": "asakuchi-blog",
   "private": true,
   "description": "blog",
-  "version": "0.1.0",
   "author": "paleApricot <paleapricot.asakuchi@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  "scripts": {
+    "build": "gatsby build --prefix-paths",
+    "develop": "gatsby develop",
+    "fix": "biome check --write --unsafe .",
+    "start": "gatsby develop",
+    "serve": "gatsby serve --prefix-paths",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "dependencies": {
     "@fontsource/merriweather": "^4.5.14",
@@ -27,26 +33,7 @@
     "react-dom": "^19.2.4"
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0",
-    "prettier": "^2.8.4"
-  },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "0BSD",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
-  },
-  "scripts": {
-    "build": "gatsby build --prefix-paths",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "gatsby develop",
-    "serve": "gatsby serve --prefix-paths",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+    "@biomejs/biome": "2.4.2",
+    "gh-pages": "^5.0.0"
   }
 }
