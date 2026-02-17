@@ -68,7 +68,7 @@
     <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> RAND<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">LIMIT</span> <span class="token number">10000000</span> <span class="token comment">-- 1千万件</span>
 <span class="token punctuation">)</span> <span class="token keyword">AS</span> random_source<span class="token punctuation">;</span></code></pre></div>
-<h2>通常のインデックス（カバリングなし）</h2>
+<h2>カバリングインデックスでないインデックスでクエリを実行</h2>
 <p>まずはカバリングインデックスになっていない状態で検索。
 <code class="language-text">category_id</code> にはインデックスがあるが、<code class="language-text">some_id</code> はインデックスに含まれていない。</p>
 <p><strong>クエリ</strong></p>
@@ -93,7 +93,7 @@
 これはインデックスで対象レコードを特定した後、<code class="language-text">some_id</code> の値を取得するためにテーブル領域へアクセスしていることを意味する。</p>
 <p>実行時間
 0.090 sec</p>
-<h2>検証2：カバリングインデックス適用</h2>
+<h2>カバリングインデックスでクエリを実行</h2>
 <p>検索条件の <code class="language-text">category_id</code> と、join 条件の <code class="language-text">some_id</code> を含む複合インデックスに変更。</p>
 <div class="gatsby-highlight" data-language="sql"><pre class="language-sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> table_1
   <span class="token keyword">DROP</span> <span class="token keyword">INDEX</span> idx_category<span class="token punctuation">,</span>
@@ -119,4 +119,4 @@ table_1についてはテーブル領域へのアクセスがスキップされ�
           >
             window.___chunkMapping="{\"app\":[\"/app-887ff3a84f7a0c102ffb.js\"],\"component---src-pages-404-js\":[\"/component---src-pages-404-js-5c78987f50857f7aac0d.js\"],\"component---src-pages-index-js\":[\"/component---src-pages-index-js-9cc3c294b6320de85639.js\"],\"component---src-pages-using-typescript-tsx\":[\"/component---src-pages-using-typescript-tsx-ccc568c46fcd6f0ee093.js\"],\"component---src-templates-blog-post-js\":[\"/component---src-templates-blog-post-js-6d13a0ee800a2fc13259.js\"]}";
           </script>
-        <script>window.___webpackCompilationHash="c69d833fc33a203523c5";</script><script src="/blog/webpack-runtime-0a3cd5048a1c8113a3bb.js" async></script><script src="/blog/framework-d3cf0d70a0364ddcba11.js" async></script><script src="/blog/app-887ff3a84f7a0c102ffb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
+        <script>window.___webpackCompilationHash="9de97a44d4742e46abf0";</script><script src="/blog/webpack-runtime-f4ebc2fd30c8e4afe9b9.js" async></script><script src="/blog/framework-d3cf0d70a0364ddcba11.js" async></script><script src="/blog/app-887ff3a84f7a0c102ffb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog RSS Feed]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 17 Feb 2026 13:22:22 GMT</lastBuildDate><item><title><![CDATA[MySQL カバリングインデックス]]></title><description><![CDATA[概要 カバリングインデックス（Covering Index）の効果検証。
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog RSS Feed]]></title><description><![CDATA[あさくちの日々の記録]]></description><link>https://asakuchi.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 17 Feb 2026 13:31:40 GMT</lastBuildDate><item><title><![CDATA[MySQL カバリングインデックス]]></title><description><![CDATA[概要 カバリングインデックス（Covering Index）の効果検証。
 インデックスに含まれるカラムだけでクエリの結果を返せる場合、テーブルデータそのものへのアクセス（ランダムI/O）を回避できるため、パフォーマンスが向上する。 https://dev.mysql.com…]]></description><link>https://asakuchi.github.io/2026-02/covering-index/</link><guid isPermaLink="false">https://asakuchi.github.io/2026-02/covering-index/</guid><pubDate>Mon, 16 Feb 2026 15:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;概要&lt;/h2&gt;
 &lt;p&gt;カバリングインデックス（Covering Index）の効果検証。
 インデックスに含まれるカラムだけでクエリの結果を返せる場合、テーブルデータそのものへのアクセス（ランダムI/O）を回避できるため、パフォーマンスが向上する。&lt;/p&gt;
@@ -64,7 +64,7 @@
     &lt;span class=&quot;token keyword&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;BY&lt;/span&gt; RAND&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;token keyword&quot;&gt;LIMIT&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;10000000&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;-- 1千万件&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;AS&lt;/span&gt; random_source&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;通常のインデックス（カバリングなし）&lt;/h2&gt;
+&lt;h2&gt;カバリングインデックスでないインデックスでクエリを実行&lt;/h2&gt;
 &lt;p&gt;まずはカバリングインデックスになっていない状態で検索。
 &lt;code class=&quot;language-text&quot;&gt;category_id&lt;/code&gt; にはインデックスがあるが、&lt;code class=&quot;language-text&quot;&gt;some_id&lt;/code&gt; はインデックスに含まれていない。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;クエリ&lt;/strong&gt;&lt;/p&gt;
@@ -89,7 +89,7 @@
 これはインデックスで対象レコードを特定した後、&lt;code class=&quot;language-text&quot;&gt;some_id&lt;/code&gt; の値を取得するためにテーブル領域へアクセスしていることを意味する。&lt;/p&gt;
 &lt;p&gt;実行時間
 0.090 sec&lt;/p&gt;
-&lt;h2&gt;検証2：カバリングインデックス適用&lt;/h2&gt;
+&lt;h2&gt;カバリングインデックスでクエリを実行&lt;/h2&gt;
 &lt;p&gt;検索条件の &lt;code class=&quot;language-text&quot;&gt;category_id&lt;/code&gt; と、join 条件の &lt;code class=&quot;language-text&quot;&gt;some_id&lt;/code&gt; を含む複合インデックスに変更。&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sql&quot;&gt;&lt;pre class=&quot;language-sql&quot;&gt;&lt;code class=&quot;language-sql&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;TABLE&lt;/span&gt; table_1
   &lt;span class=&quot;token keyword&quot;&gt;DROP&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;INDEX&lt;/span&gt; idx_category&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
