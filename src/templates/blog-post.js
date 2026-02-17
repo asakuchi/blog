@@ -18,8 +18,29 @@ const BlogPostTemplate = ({
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
+          <h1>{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
+          {post.frontmatter.tags && (
+            <ul className="tags-list" style={{ display: 'flex', listStyle: 'none', padding: 0, gap: '0.5rem', marginBottom: '1rem' }}>
+              {post.frontmatter.tags.map(tag => (
+                <li key={tag}>
+                  <Link
+                    to={`/tags/${tag.toLowerCase()}/`}
+                    style={{
+                      padding: '0.2rem 0.5rem',
+                      background: '#eee',
+                      borderRadius: '4px',
+                      fontSize: '0.8rem',
+                      textDecoration: 'none',
+                      color: '#444'
+                    }}
+                  >
+                    #{tag}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </header>
         <section
           // biome-ignore lint/security/noDangerouslySetInnerHtml: Gatsby uses this for HTML content
@@ -91,6 +112,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

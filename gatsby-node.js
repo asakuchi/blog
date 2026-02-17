@@ -25,6 +25,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           fields {
             slug
           }
+          frontmatter {
+            tags
+          }
+        }
+      }
+      tagsGroup: allMarkdownRemark(limit: 2000) {
+        group(field: { frontmatter: { tags: SELECT } }) {
+          fieldValue
         }
       }
     }
@@ -61,6 +69,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     });
   }
+
+  // Extract tag data from query
+  const tags = result.data.tagsGroup.group;
+  const tagTemplate = path.resolve(`src/templates/tags.js`);
+
+  // Make tag pages
+  tags.forEach(tag => {
+    createPage({
+      path: `/tags/${tag.fieldValue.toLowerCase()}/`,
+      component: tagTemplate,
+      context: {
+        tag: tag.fieldValue,
+      },
+    });
+  });
 };
 
 /**
@@ -117,6 +140,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       description: String
       date: Date @dateformat
+      tags: [String]
     }
 
     type Fields {

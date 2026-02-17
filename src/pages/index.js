@@ -42,6 +42,27 @@ const BlogIndex = ({ data, location }) => {
                     </Link>
                   </h2>
                   <small>{post.frontmatter.date}</small>
+                  {post.frontmatter.tags && (
+                    <ul className="tags-list" style={{ display: 'flex', listStyle: 'none', padding: 0, gap: '0.4rem', marginTop: '0.3rem', marginBottom: '0.5rem' }}>
+                      {post.frontmatter.tags.map(tag => (
+                        <li key={tag}>
+                          <Link
+                            to={`/tags/${tag.toLowerCase()}/`}
+                            style={{
+                              padding: '0.1rem 0.4rem',
+                              background: '#f0f0f0',
+                              borderRadius: '3px',
+                              fontSize: '0.75rem',
+                              textDecoration: 'none',
+                              color: '#666'
+                            }}
+                          >
+                            #{tag}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </header>
                 <section>
                   <p
@@ -87,6 +108,7 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
+          tags
         }
       }
     }
