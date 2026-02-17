@@ -12,7 +12,7 @@ module.exports = {
     title: `あさくちブログ`,
     author: {
       name: `あさくち`,
-      summary: `Webエンジニアっぽい仕事をしている`,
+      summary: `ITエンジニアです。Web開発と競技プログラミング。`,
     },
     description: `あさくちの日々の記録`,
     siteUrl: `https://asakuchi.github.io/`,
